@@ -3,100 +3,552 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lee Fuhr — small, sharp tools for saying what you do</title>
-<meta name="description" content="Cheap, useful worksheets and prompt packs for positioning, messaging, and pricing. $7 to $19. No course, no upsell. Buy the one you need and use it tonight.">
-<meta property="og:title" content="Lee Fuhr — small, sharp tools for saying what you do">
-<meta property="og:description" content="Worksheets and prompt packs for positioning, messaging, and pricing. $7 to $19. Instant download.">
+<title>Lee Fuhr · small, sharp tools for trades and small operators</title>
+<meta name="description" content="24 cheap, useful worksheets, checklists, and swipe files for getting found, winning the job, and saying what you do. $15 and $25. No course, no upsell. Buy the one you need and use it tonight.">
+<meta property="og:title" content="Lee Fuhr · small, sharp tools for saying what you do">
+<meta property="og:description" content="24 worksheets and swipe files for getting found, winning the job, and pricing. $15 and $25. Instant download.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://lee-fuhr.github.io/store/img/homepage-worksheet.png">
 <link rel="canonical" href="https://lee-fuhr.github.io/store/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&family=Literata:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#0f1c30;--navy-2:#16284a;--gold:#d4af37;--gold-soft:#e7c86a;--ink:#eaf0fa;--muted:#a9b6cc;--card:#16243f;--line:rgba(212,175,55,.16);}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:860px;margin:0 auto;padding:0 22px;}
-  a{color:inherit;}
-  header{padding:74px 0 30px;text-align:center;background:radial-gradient(120% 90% at 50% 0%,var(--navy-2),var(--navy));border-bottom:1px solid var(--line);}
-  .badge{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,175,55,.5);border-radius:999px;padding:6px 16px;margin-bottom:22px;}
-  h1{font-size:clamp(29px,5.2vw,44px);font-weight:800;line-height:1.12;letter-spacing:-.01em;}
-  .lead{max-width:600px;margin:18px auto 0;color:var(--muted);font-size:17.5px;}
-  .trust{margin:22px auto 0;font-size:13.5px;color:var(--muted);display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
-  .trust span{display:inline-flex;align-items:center;gap:7px;}
-  .dot{color:var(--gold);}
-  main{padding:38px 0 10px;}
-  .card{display:flex;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:18px;transition:border-color .15s,transform .15s;}
-  .card:hover{border-color:rgba(212,175,55,.42);transform:translateY(-2px);}
-  .card:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px;}
-  .thumb{flex:0 0 120px;width:120px;height:160px;border-radius:9px;object-fit:cover;object-position:top;border:1px solid var(--line);background:#fff;}
-  .body{display:flex;flex-direction:column;gap:7px;min-width:0;}
-  .body h2{font-size:19px;font-weight:700;line-height:1.25;}
-  .price{color:var(--gold-soft);font-weight:800;font-size:16px;letter-spacing:.02em;}
-  .body p{color:var(--muted);font-size:15px;}
-  .cta{margin-top:6px;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;color:var(--gold-soft);font-weight:700;text-decoration:none;font-size:15px;border:1px solid rgba(212,175,55,.5);border-radius:999px;padding:9px 18px;transition:background .15s,color .15s;}
-  .cta:hover{background:var(--gold);color:#15233e;border-color:var(--gold);}
-  .cta .arr{transition:transform .15s;}
-  .card:hover .cta .arr{transform:translateX(3px);}
-  footer{padding:36px 0 64px;text-align:center;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line);margin-top:26px;}
-  footer a{color:var(--gold-soft);text-decoration:none;}
-  @media(max-width:560px){ .card{flex-direction:column;align-items:center;text-align:center;} .thumb{width:128px;height:170px;flex-basis:auto;} .cta,.body{align-self:center;align-items:center;} }
+/* ============================================================
+   LFI canonical brand tokens, light editorial system.
+   Matches leefuhr.com + product PDFs + brand-kit.css.
+   STAGED DRAFT styles for index.mint-draft.html (24 minted products).
+   Card copy = tight pulls from Lee's APPROVED trades/spicy intros.
+   NOT deployed. JS filter is progressive-enhancement only.
+   ============================================================ */
+:root{
+  --paper:#fafafa;
+  --paper-2:#f4f4f4;
+  --ink:#1a1a1a;
+  --ink-soft:#555555;
+  --ink-faint:#888888;
+  --accent:#1f3a5f;
+  --accent-soft:#2c4f7c;
+  --hairline:#e5e5e5;
+  --font-head:'EB Garamond',Georgia,'Times New Roman',serif;
+  --font-body:'Literata',Georgia,serif;
+  --font-meta:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  font-family:var(--font-body);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{color:inherit;text-decoration:none;}
+
+.wrap{max-width:860px;margin:0 auto;padding:0 22px;}
+
+/* ---- Header / hero ---- */
+header{
+  padding:72px 0 36px;
+  text-align:center;
+  border-bottom:1px solid var(--hairline);
+}
+
+.badge{
+  display:inline-block;
+  font-family:var(--font-meta);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  border:1px solid var(--accent);
+  border-radius:999px;
+  padding:5px 14px;
+  margin-bottom:24px;
+}
+
+h1{
+  font-family:var(--font-head);
+  font-size:clamp(29px,5.2vw,44px);
+  font-weight:700;
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  max-width:700px;
+  margin:0 auto;
+}
+
+.lead{
+  max-width:600px;
+  margin:18px auto 0;
+  color:var(--ink-soft);
+  font-family:var(--font-body);
+  font-size:17.5px;
+  line-height:1.65;
+}
+
+.trust{
+  margin:24px auto 0;
+  font-family:var(--font-meta);
+  font-size:11.5px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.trust span{display:inline-flex;align-items:center;gap:6px;}
+.dot{color:var(--accent);}
+
+.rule-accent{
+  width:40px;
+  height:3px;
+  background:var(--accent);
+  border-radius:2px;
+  margin:28px auto 0;
+}
+
+/* ---- Filter chips ---- */
+.filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  justify-content:center;
+  margin:30px 0 6px;
+}
+
+.chip{
+  font-family:var(--font-meta);
+  font-size:11.5px;
+  letter-spacing:.05em;
+  color:var(--accent);
+  background:transparent;
+  border:1px solid var(--accent);
+  border-radius:999px;
+  padding:6px 14px;
+  cursor:pointer;
+  transition:background .15s,color .15s;
+}
+
+.chip[aria-pressed="true"]{
+  background:var(--accent);
+  color:var(--paper);
+}
+
+.count{
+  text-align:center;
+  font-family:var(--font-meta);
+  font-size:11px;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin:14px 0 0;
+}
+
+/* ---- Product grid ---- */
+main{padding:30px 0 12px;}
+
+.card{
+  display:block;
+  background:var(--paper-2);
+  border:1px solid var(--hairline);
+  border-radius:12px;
+  padding:20px 22px;
+  margin-bottom:14px;
+  transition:border-color .15s,transform .15s,box-shadow .15s;
+  color:var(--ink);
+}
+
+.card:hover{
+  border-color:var(--accent);
+  transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(31,58,95,.08);
+}
+
+.card:focus-visible{
+  outline:2px solid var(--accent-soft);
+  outline-offset:3px;
+}
+
+.card[hidden]{display:none;}
+
+.body{display:flex;flex-direction:column;gap:7px;min-width:0;}
+
+.tag{
+  align-self:flex-start;
+  font-family:var(--font-meta);
+  font-size:10.5px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent-soft);
+}
+
+.body h2{
+  font-family:var(--font-head);
+  font-size:21px;
+  font-weight:700;
+  line-height:1.22;
+  color:var(--ink);
+}
+
+.price{
+  font-family:var(--font-meta);
+  font-size:13px;
+  letter-spacing:.06em;
+  color:var(--accent);
+  font-weight:700;
+}
+
+.body p{
+  color:var(--ink-soft);
+  font-family:var(--font-body);
+  font-size:15px;
+  line-height:1.6;
+}
+
+.cta{
+  margin-top:6px;
+  align-self:flex-start;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--font-meta);
+  font-size:12px;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  background:var(--accent);
+  color:var(--paper);
+  border:1px solid var(--accent);
+  border-radius:999px;
+  padding:9px 18px;
+  transition:background .15s,border-color .15s;
+}
+
+.cta:hover{
+  background:var(--accent-soft);
+  border-color:var(--accent-soft);
+  color:var(--paper);
+}
+
+.cta .arr{transition:transform .15s;}
+.card:hover .cta .arr{transform:translateX(3px);}
+
+/* ---- Footer ---- */
+footer{
+  padding:36px 0 64px;
+  text-align:center;
+  color:var(--ink-faint);
+  font-family:var(--font-meta);
+  font-size:12px;
+  letter-spacing:.05em;
+  border-top:1px solid var(--hairline);
+  margin-top:28px;
+}
+
+footer a{
+  color:var(--accent);
+  text-decoration:none;
+  transition:color .15s;
+}
+
+footer a:hover{color:var(--accent-soft);}
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ItemList","name":"Lee Fuhr — messaging and positioning tools","itemListElement":[
-{"@type":"Product","name":"The AI Prompt Pack","image":"https://lee-fuhr.github.io/store/img/ai-prompt-pack.png","description":"16 battle-tested business prompts for messaging, positioning, and content.","offers":{"@type":"Offer","price":"14.00","priceCurrency":"USD","url":"https://payhip.com/b/KSPju","availability":"https://schema.org/InStock"}},
-{"@type":"Product","name":"Homepage positioning worksheet","image":"https://lee-fuhr.github.io/store/img/homepage-worksheet.png","description":"Rewrite your hero section in one sitting so a stranger gets it in five seconds.","offers":{"@type":"Offer","price":"12.00","priceCurrency":"USD","url":"https://payhip.com/b/qhN4z","availability":"https://schema.org/InStock"}},
-{"@type":"Product","name":"Positioning worksheet bundle","image":"https://lee-fuhr.github.io/store/img/positioning-bundle.png","description":"Three worksheets to sharpen who it is for, why it is different, and what to say first.","offers":{"@type":"Offer","price":"19.00","priceCurrency":"USD","url":"https://payhip.com/b/87U9l","availability":"https://schema.org/InStock"}},
-{"@type":"Product","name":"Trades business job pricing guide","image":"https://lee-fuhr.github.io/store/img/trades-pricing.png","description":"Price a job so you keep real money, without scaring off the good customers.","offers":{"@type":"Offer","price":"17.00","priceCurrency":"USD","url":"https://payhip.com/b/6LFgf","availability":"https://schema.org/InStock"}},
-{"@type":"Product","name":"Pressure Washing for Profit","image":"https://lee-fuhr.github.io/store/img/pressure-washing.png","description":"The honest version: what gear to buy, what to charge, how to land the first ten jobs.","offers":{"@type":"Offer","price":"7.00","priceCurrency":"USD","url":"https://payhip.com/b/D3uiY","availability":"https://schema.org/InStock"}}]}
+{"@context":"https://schema.org","@type":"ItemList","name":"Lee Fuhr · small, sharp tools for trades and small operators","itemListElement":[{"@type":"Product","name":"Cold outreach swipe file","description":"Real cold messages ripped apart line by line, then the rewrite that gets a callback.","offers":{"@type":"Offer","price":"25.00","priceCurrency":"USD","url":"https://buy.stripe.com/4gM14p44bgei2H50dr1wY0P","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The what-they-get worksheet","description":"Turn every dry fact on your site into the reason a customer picks you.","offers":{"@type":"Offer","price":"25.00","priceCurrency":"USD","url":"https://buy.stripe.com/fZu7sN307e6achF1hv1wY0Q","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The new-business messaging kit","description":"The fill-in-the-blank set that nails who you are for and what you say in one line.","offers":{"@type":"Offer","price":"25.00","priceCurrency":"USD","url":"https://buy.stripe.com/fZu4gB1W30fk3L95xL1wY0R","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"Homepage teardown checklist","description":"40 scored checks to see your site the way a stranger does on their phone.","offers":{"@type":"Offer","price":"25.00","priceCurrency":"USD","url":"https://buy.stripe.com/9B6fZj6cjaTY6Xlgcp1wY0S","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The about page rewrite swipe file","description":"Rebuild the boring about-page lines into copy that earns trust and points at the call.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/14A3cx44b6DI6Xl6BP1wY0T","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The consistency checklist","description":"A scorecard to see whether you sound like one outfit or three.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/fZucN7fMT2ns2H59O11wY0U","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The cold email checklist","description":"Score a cold email before you send it, against the reasons it gets trashed.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/3cI7sN1W36DIgxV9O11wY0V","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The content angle worksheet","description":"Five ways to find the take only you can post so customers find you.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/fZu9AV58f0fkftR7FT1wY0W","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The discovery call that closes itself","description":"Three moves for an estimate call where you ask, then shut up, and they sell themselves.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/7sY00l44b9PU81p7FT1wY0X","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The headline rewrite swipe file","description":"Watch flat website headlines get rebuilt into lines a customer wants to read.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/00w28t44b0fk2H56BP1wY0Y","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The homepage clarity checklist","description":"The scorecard for the five-second test every home-service site has to pass.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/28EbJ38kr0fkchFf8l1wY0Z","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The ideal customer worksheet","description":"Pick the one customer you would take ten more of and write straight to them.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/6oUcN77gn0fkftR8JX1wY10","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The page-that-gets-calls checklist","description":"Find the leaks in a paid-traffic page while they are still cheap to plug.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/cNi14p44baTY81p0dr1wY11","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The before-you-go-live checklist","description":"The scorecard to run before a fresh site or new service line goes live.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/6oU14p9ovaTY2H5bW91wY12","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The one-message worksheet","description":"Decide what you say once and say it the same on your site, truck, and flyer.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/3cIaEZbwDbY26Xlgcp1wY13","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The objection handling swipe file","description":"The reply that turns every estimate brush-off into the next step.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/aFadRb9ovgei1D1aS51wY14","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The offer clarity worksheet","description":"The five decisions that make saying yes to your quote obvious.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/8x2fZjdELbY25Thf8l1wY15","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The one-liner that explains your business","description":"Build the one sentence a stranger can repeat correctly about your business.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/7sY4gB0RZfae3L98JX1wY16","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The who-you’re-for worksheet","description":"The four calls every clear pitch stands on, so your words stop fighting you.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/dRm7sN0RZaTYftR5xL1wY17","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The pricing confidence worksheet","description":"Get from your real floor to a number you can quote with a straight face.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/cNi4gB1W3aTY1D11hv1wY18","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The website rewrite swipe file","description":"Rebuild the three spots on your page where a homeowner leans in or leaves.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/3cI9AV6cjbY25Th2lz1wY19","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The story structure that makes people care","description":"The one shape behind every story a customer repeats to the neighbor.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/eVq3cxgQXe6a0yX0dr1wY1a","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The subject line that gets the open","description":"Three moves for a subject line that sounds like a note from somebody they know.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/eVq6oJ58f0fkdlJ6BP1wY1b","availability":"https://schema.org/InStock"}},{"@type":"Product","name":"The why-pick-you worksheet","description":"The one sentence that says why you, and only you, in four pieces.","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","url":"https://buy.stripe.com/14AdRb9ovaTYdlJbW91wY1c","availability":"https://schema.org/InStock"}}]}
 </script>
 </head>
 <body>
 <header><div class="wrap">
   <span class="badge">Lee Fuhr</span>
   <h1>Small, sharp tools for saying what you do</h1>
-  <p class="lead">The worksheets and prompt packs I reach for when I help someone fix how they talk about their work. Each does one job, fast.</p>
+  <p class="lead">Twenty-four worksheets, checklists, and swipe files for getting found, winning the job, and saying what you do. Each does one job, fast. Pick the one you need and use it tonight.</p>
   <div class="trust"><span><span class="dot">&#10003;</span> Instant download</span><span><span class="dot">&#10003;</span> Secure checkout</span><span><span class="dot">&#10003;</span> No course, no upsell</span></div>
+  <div class="rule-accent"></div>
+  <div class="filters" id="filters">
+    <button class="chip" data-filter="all" aria-pressed="true">All 24</button>
+    <button class="chip" data-filter="Getting found" aria-pressed="false">Getting found</button>
+    <button class="chip" data-filter="Your website" aria-pressed="false">Your website</button>
+    <button class="chip" data-filter="Winning the job" aria-pressed="false">Winning the job</button>
+    <button class="chip" data-filter="Reaching out" aria-pressed="false">Reaching out</button>
+    <button class="chip" data-filter="Your voice" aria-pressed="false">Your voice</button>
+    <button class="chip" data-filter="Getting started" aria-pressed="false">Getting started</button>
+  </div>
+  <p class="count" id="count"></p>
 </div></header>
-<main class="wrap">
+<main class="wrap" id="grid">
 
-  <a class="card" href="https://payhip.com/b/KSPju">
-    <img class="thumb" src="img/ai-prompt-pack.png" alt="The AI Prompt Pack cover" loading="lazy">
-    <div class="body"><h2>The AI Prompt Pack</h2><span class="price">$14</span>
-      <p>The 16 prompts I actually use for messaging, positioning, and content. Copy, paste, tweak, done.</p>
-      <span class="cta">See details <span class="arr">&rarr;</span></span></div>
+  <a class="card" href="https://buy.stripe.com/4gM14p44bgei2H50dr1wY0P" data-tag="Reaching out">
+    <div class="body">
+      <span class="tag">Reaching out</span>
+      <h2>Cold outreach swipe file</h2>
+      <span class="price">$25</span>
+      <p>Real cold messages ripped apart line by line, then the rewrite that gets a callback. Steal the pattern, not the words, and stop sounding like everybody bidding the same job.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
   </a>
 
-  <a class="card" href="https://payhip.com/b/qhN4z">
-    <img class="thumb" src="img/homepage-worksheet.png" alt="Homepage positioning worksheet cover" loading="lazy">
-    <div class="body"><h2>Homepage positioning worksheet</h2><span class="price">$12</span>
-      <p>Rewrite your hero section in one sitting, so a stranger gets what you do in five seconds.</p>
-      <span class="cta">See details <span class="arr">&rarr;</span></span></div>
+  <a class="card" href="https://buy.stripe.com/fZu7sN307e6achF1hv1wY0Q" data-tag="Your website">
+    <div class="body">
+      <span class="tag">Your website</span>
+      <h2>The what-they-get worksheet</h2>
+      <span class="price">$25</span>
+      <p>Your license number and your fancy gear make the customer feel nothing. This walks every fact down to the reason somebody picks you: shows up when you said, no callbacks, no mess left in the driveway.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
   </a>
 
-  <a class="card" href="https://payhip.com/b/87U9l">
-    <img class="thumb" src="img/positioning-bundle.png" alt="Positioning worksheet bundle cover" loading="lazy">
-    <div class="body"><h2>Positioning worksheet bundle</h2><span class="price">$19</span>
-      <p>Three worksheets: who it is for, why it is different, what to say first. Stop sounding like everyone else.</p>
-      <span class="cta">See details <span class="arr">&rarr;</span></span></div>
+  <a class="card" href="https://buy.stripe.com/fZu4gB1W30fk3L95xL1wY0R" data-tag="Getting started">
+    <div class="body">
+      <span class="tag">Getting started</span>
+      <h2>The new-business messaging kit</h2>
+      <span class="price">$25</span>
+      <p>When you run the whole show, your site and your voicemail are selling while you’re up on a roof somewhere. The fill-in-the-blank set that nails who you’re for and what you say in one line, in an afternoon.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
   </a>
 
-  <a class="card" href="https://payhip.com/b/6LFgf">
-    <img class="thumb" src="img/trades-pricing.png" alt="Trades business job pricing guide cover" loading="lazy">
-    <div class="body"><h2>Trades business job pricing guide</h2><span class="price">$17</span>
-      <p>Price a job so you keep real money, without scaring off the good customers.</p>
-      <span class="cta">See details <span class="arr">&rarr;</span></span></div>
+  <a class="card" href="https://buy.stripe.com/9B6fZj6cjaTY6Xlgcp1wY0S" data-tag="Your website">
+    <div class="body">
+      <span class="tag">Your website</span>
+      <h2>Homepage teardown checklist</h2>
+      <span class="price">$25</span>
+      <p>Your site loses the job when a customer gives it three seconds on their phone and can’t tell what you do. 40 checks I run before touching a word, each one scored, so you see your site the way a stranger does.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
   </a>
 
-  <a class="card" href="https://payhip.com/b/D3uiY">
-    <img class="thumb" src="img/pressure-washing.png" alt="Pressure Washing for Profit cover" loading="lazy">
-    <div class="body"><h2>Pressure Washing for Profit</h2><span class="price">$7</span>
-      <p>The honest version: what gear to buy, what to charge, how to land the first ten jobs.</p>
-      <span class="cta">See details <span class="arr">&rarr;</span></span></div>
+  <a class="card" href="https://buy.stripe.com/14A3cx44b6DI6Xl6BP1wY0T" data-tag="Your website">
+    <div class="body">
+      <span class="tag">Your website</span>
+      <h2>The about page rewrite swipe file</h2>
+      <span class="price">$15</span>
+      <p>Your about page is where somebody decides whether you’re a real outfit or a guy with a magnet sign. This rebuilds the boring lines, founded in 2009, family owned, into copy that earns the trust and points at the call.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/fZucN7fMT2ns2H59O11wY0U" data-tag="Your voice">
+    <div class="body">
+      <span class="tag">Your voice</span>
+      <h2>The consistency checklist</h2>
+      <span class="price">$15</span>
+      <p>Your website talks like a lawyer, your quotes read like a text, your voicemail sounds like a third company, and customers clock it. A scorecard to see whether you sound like one outfit or three. The cheapest trust you’ll ever buy.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/3cI7sN1W36DIgxV9O11wY0V" data-tag="Reaching out">
+    <div class="body">
+      <span class="tag">Reaching out</span>
+      <h2>The cold email checklist</h2>
+      <span class="price">$15</span>
+      <p>Cold-emailing a property manager to get on the vendor list? You get one shot. This scores the email before you hit send, against the exact reasons it lands in the trash: it’s about them, one small ask, no blast.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/fZu9AV58f0fkftR7FT1wY0W" data-tag="Getting found">
+    <div class="body">
+      <span class="tag">Getting found</span>
+      <h2>The content angle worksheet</h2>
+      <span class="price">$15</span>
+      <p>Every plumber in town posts the same truck photo and “call us for all your needs.” Five ways to find the take only you can post, so when somebody’s deciding who to call, you sound like you know the work cold.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/7sY00l44b9PU81p7FT1wY0X" data-tag="Winning the job">
+    <div class="body">
+      <span class="tag">Winning the job</span>
+      <h2>The discovery call that closes itself</h2>
+      <span class="price">$15</span>
+      <p>Most guys walk into an estimate and start talking. The ones who win ask what’s going on, what it’s costing sitting broken, and let the customer talk themselves into it. Three moves where you ask, then shut up.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/00w28t44b0fk2H56BP1wY0Y" data-tag="Your website">
+    <div class="body">
+      <span class="tag">Your website</span>
+      <h2>The headline rewrite swipe file</h2>
+      <span class="price">$15</span>
+      <p>The line at the top of your site does the most work and usually does it worst. Watch flat headlines get rebuilt, from “family owned since 2009” to the thing a homeowner with a leak wants to hear.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/28EbJ38kr0fkchFf8l1wY0Z" data-tag="Your website">
+    <div class="body">
+      <span class="tag">Your website</span>
+      <h2>The homepage clarity checklist</h2>
+      <span class="price">$15</span>
+      <p>A customer gives your site five seconds to answer three things: what is this, is it for me, what do I do next. The scorecard for that five-second test, because no slick photo saves a page a stranger can’t figure out fast.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/6oUcN77gn0fkftR8JX1wY10" data-tag="Getting found">
+    <div class="body">
+      <span class="tag">Getting found</span>
+      <h2>The ideal customer worksheet</h2>
+      <span class="price">$15</span>
+      <p>Write your site for “anyone who needs a plumber” and it comes out soft. Pick the one customer you’d take ten more of, get into their actual words, and your site reads like you read their mind.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/cNi14p44baTY81p0dr1wY11" data-tag="Your website">
+    <div class="body">
+      <span class="tag">Your website</span>
+      <h2>The page-that-gets-calls checklist</h2>
+      <span class="price">$15</span>
+      <p>Paying Google to send people to a confusing page is money on fire. This walks the page section by section and finds the leaks while they’re still cheap to plug, so the clicks you paid for turn into calls.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/6oU14p9ovaTY2H5bW91wY12" data-tag="Getting started">
+    <div class="body">
+      <span class="tag">Getting started</span>
+      <h2>The before-you-go-live checklist</h2>
+      <span class="price">$15</span>
+      <p>A fresh site or a new service line doesn’t flop because the idea was bad, it flops because the boring stuff wasn’t ready. The scorecard I run before anything goes live. Score it a week out, fix every zero.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/3cIaEZbwDbY26Xlgcp1wY13" data-tag="Your voice">
+    <div class="body">
+      <span class="tag">Your voice</span>
+      <h2>The one-message worksheet</h2>
+      <span class="price">$15</span>
+      <p>Your website, your truck, your flyer, and your guy on the phone all tell a slightly different story. Decide what you do once, pin the two or three reasons you’re the one to call, and say it the same everywhere.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/aFadRb9ovgei1D1aS51wY14" data-tag="Winning the job">
+    <div class="body">
+      <span class="tag">Winning the job</span>
+      <h2>The objection handling swipe file</h2>
+      <span class="price">$15</span>
+      <p>“Too expensive” almost never means too expensive. Take the brush-offs you get on every estimate, “more than I thought,” “I need to talk to my wife,” and the reply that turns each one into the next step.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/8x2fZjdELbY25Thf8l1wY15" data-tag="Winning the job">
+    <div class="body">
+      <span class="tag">Winning the job</span>
+      <h2>The offer clarity worksheet</h2>
+      <span class="price">$15</span>
+      <p>A confused customer doesn’t call back. The five decisions that make a yes obvious: what they get, what it costs, what happens next. You’re not dropping your price, you’re cutting the work it takes to say yes.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/7sY4gB0RZfae3L98JX1wY16" data-tag="Getting found">
+    <div class="body">
+      <span class="tag">Getting found</span>
+      <h2>The one-liner that explains your business</h2>
+      <span class="price">$15</span>
+      <p>If the guy at the supply counter can’t tell what you do from one sentence, no truck wrap saves you. This walks you to a line a stranger repeats correctly, built from the customer’s problem and one sharp claim.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/dRm7sN0RZaTYftR5xL1wY17" data-tag="Getting found">
+    <div class="body">
+      <span class="tag">Getting found</span>
+      <h2>The who-you’re-for worksheet</h2>
+      <span class="price">$15</span>
+      <p>Half the trades sites in town read the same because nobody decided who they were for before they started typing. The four calls every clear pitch stands on, so the words for your site, truck, and quote stop being a fight.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/cNi4gB1W3aTY1D11hv1wY18" data-tag="Winning the job">
+    <div class="body">
+      <span class="tag">Winning the job</span>
+      <h2>The pricing confidence worksheet</h2>
+      <span class="price">$15</span>
+      <p>You shave your quote because you’re scared they’ll walk, then resent the whole job. This walks you from your real floor up to a figure you can quote with a straight face. That wobble in your voice did more damage than the number.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/3cI9AV6cjbY25Th2lz1wY19" data-tag="Your website">
+    <div class="body">
+      <span class="tag">Your website</span>
+      <h2>The website rewrite swipe file</h2>
+      <span class="price">$15</span>
+      <p>Your page loses the job in the few spots where the homeowner leans in or quietly calls the next guy. This rips three of those moments apart and rebuilds them, so a small wording swap turns a maybe into a booked job.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/eVq3cxgQXe6a0yX0dr1wY1a" data-tag="Your voice">
+    <div class="body">
+      <span class="tag">Your voice</span>
+      <h2>The story structure that makes people care</h2>
+      <span class="price">$15</span>
+      <p>Nobody remembers that you’re licensed and bonded. They remember the time you crawled under a house at 11pm so a family had heat by morning. The one shape every story you’ve ever leaned into is built on.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/eVq6oJ58f0fkdlJ6BP1wY1b" data-tag="Reaching out">
+    <div class="body">
+      <span class="tag">Reaching out</span>
+      <h2>The subject line that gets the open</h2>
+      <span class="price">$15</span>
+      <p>Write the perfect follow-up, and a flyer-sounding subject line kills it unopened in the pile. Three moves for a line that sounds like a note from somebody they know. Honest and curious beats clever and cheap.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="card" href="https://buy.stripe.com/14AdRb9ovaTYdlJbW91wY1c" data-tag="Getting found">
+    <div class="body">
+      <span class="tag">Getting found</span>
+      <h2>The why-pick-you worksheet</h2>
+      <span class="price">$15</span>
+      <p>Of the three outfits that quoted, why you? If the answer is “quality work and great service,” you just said what the other two said. The one sentence that says why you, and only you, in four pieces.</p>
+      <span class="cta">Get it <span class="arr">&rarr;</span></span>
+    </div>
   </a>
 
 </main>
 <footer class="wrap">
-  Secure checkout by Payhip &middot; instant download after purchase.<br>
+  Secure checkout by Stripe &middot; instant download after purchase.<br>
   <a href="https://lee-fuhr.github.io/">See my buying guides &rarr;</a> &middot; &copy; Lee Fuhr
 </footer>
+<script>
+(function(){
+  var grid=document.getElementById('grid');
+  var cards=Array.prototype.slice.call(grid.querySelectorAll('.card'));
+  var chips=Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var count=document.getElementById('count');
+  function apply(filter){
+    var shown=0;
+    cards.forEach(function(c){
+      var match=(filter==='all'||c.getAttribute('data-tag')===filter);
+      c.hidden=!match;
+      if(match) shown++;
+    });
+    chips.forEach(function(ch){
+      ch.setAttribute('aria-pressed', ch.getAttribute('data-filter')===filter ? 'true':'false');
+    });
+    count.textContent=shown+(shown===1?' tool':' tools')+(filter==='all'?'':' \u00b7 '+filter);
+  }
+  chips.forEach(function(ch){
+    ch.addEventListener('click', function(){ apply(ch.getAttribute('data-filter')); });
+  });
+  apply('all');
+})();
+</script>
 </body>
 </html>
