@@ -1,67 +1,293 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Picks &amp; Hub — honest buying guides for home, office &amp; kitchen gear</title>
+<title>Picks &amp; Hub: honest buying guides for home, office &amp; kitchen gear</title>
 <meta name="description" content="A curated hub of independent buying guides: coffee grinders, espresso machines, home gym gear, office chairs, monitors, standing desks, robot vacuums, mattresses, mechanical keyboards, headphones, blenders, pressure washers and air purifiers.">
 <link rel="canonical" href="https://lee-fuhr.github.io/">
-<meta property="og:title" content="Picks &amp; Hub — honest buying guides">
+<meta property="og:title" content="Picks &amp; Hub: honest buying guides">
 <meta property="og:description" content="Independent, no-nonsense buying guides across 13 categories of home, office and kitchen gear.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lee-fuhr.github.io/">
+
+<!-- Brand-kit: Google Fonts (EB Garamond + Literata + JetBrains Mono) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&family=Literata:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
-  :root{--navy:#0f1c30;--navy-2:#16284a;--gold:#d4af37;--gold-soft:#e7c86a;--ink:#eaf0fa;--muted:#a9b6cc;}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
-  header{padding:64px 0 40px;text-align:center;background:linear-gradient(180deg,var(--navy-2),var(--navy));border-bottom:1px solid rgba(212,175,55,.25);}
-  .badge{display:inline-block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,175,55,.5);border-radius:999px;padding:6px 16px;margin-bottom:22px;}
-  h1{font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.15;}
-  h1 .accent{color:var(--gold);}
-  .lead{max-width:680px;margin:18px auto 0;color:var(--muted);font-size:18px;}
-  main{padding:48px 0 24px;}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
-  .card{display:block;background:var(--navy-2);border:1px solid rgba(212,175,55,.18);border-radius:14px;padding:22px 22px 20px;text-decoration:none;color:inherit;transition:border-color .18s ease,transform .18s ease;}
-  .card:hover{border-color:var(--gold);transform:translateY(-2px);}
-  .card h2{font-size:19px;color:var(--gold-soft);margin-bottom:6px;}
-  .card p{color:var(--muted);font-size:15px;}
-  .card .go{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:var(--gold);letter-spacing:.04em;}
-  .disclosure{margin:40px auto 0;max-width:760px;text-align:center;color:#7f8ca6;font-size:13px;border-top:1px solid rgba(255,255,255,.08);padding-top:24px;}
-  footer{text-align:center;color:#6b7790;font-size:13px;padding:28px 0 48px;}
-  footer a{color:#8ea0bf;}
+/* ============================================================
+   LFI canonical brand tokens, light editorial system.
+   Matches leefuhr.com + product PDFs + affiliate engine.
+   STAGED DRAFT: index.brand-draft.html (do NOT edit index.html)
+   Navy + gold dark theme → light ink-blue editorial.
+   ============================================================ */
+:root{
+  --paper:#fafafa;
+  --paper-2:#f4f4f4;
+  --ink:#1a1a1a;
+  --ink-soft:#555555;
+  --ink-faint:#888888;
+  --accent:#1f3a5f;
+  --accent-soft:#2c4f7c;
+  --hairline:#e5e5e5;
+  --font-head:'EB Garamond',Georgia,'Times New Roman',serif;
+  --font-body:'Literata',Georgia,serif;
+  --font-meta:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  font-family:var(--font-body);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{color:inherit;text-decoration:none;}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px;}
+
+/* ---- Header / hero ---- */
+header{
+  padding:72px 0 48px;
+  text-align:center;
+  border-bottom:1px solid var(--hairline);
+}
+
+.badge{
+  display:inline-block;
+  font-family:var(--font-meta);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  border:1px solid var(--accent);
+  border-radius:999px;
+  padding:5px 14px;
+  margin-bottom:24px;
+}
+
+h1{
+  font-family:var(--font-head);
+  font-size:clamp(28px,5vw,46px);
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  max-width:700px;
+  margin:0 auto;
+}
+
+.lead{
+  max-width:680px;
+  margin:18px auto 0;
+  color:var(--ink-soft);
+  font-family:var(--font-body);
+  font-size:17.5px;
+  line-height:1.65;
+}
+
+.rule-accent{
+  width:40px;
+  height:3px;
+  background:var(--accent);
+  border-radius:2px;
+  margin:32px auto 0;
+}
+
+/* ---- Guide grid ---- */
+main{padding:48px 0 24px;}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:18px;
+}
+
+.card{
+  display:block;
+  background:var(--paper-2);
+  border:1px solid var(--hairline);
+  border-radius:12px;
+  padding:22px 22px 20px;
+  text-decoration:none;
+  color:var(--ink);
+  transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease;
+}
+
+.card:hover{
+  border-color:var(--accent);
+  transform:translateY(-2px);
+  box-shadow:0 4px 18px rgba(31,58,95,.08);
+}
+
+.card:focus-visible{
+  outline:2px solid var(--accent-soft);
+  outline-offset:3px;
+}
+
+.card h2{
+  font-family:var(--font-head);
+  font-size:20px;
+  font-weight:700;
+  line-height:1.2;
+  color:var(--ink);
+  margin-bottom:6px;
+}
+
+.card p{
+  color:var(--ink-soft);
+  font-family:var(--font-body);
+  font-size:15px;
+  line-height:1.6;
+}
+
+.go{
+  display:inline-block;
+  margin-top:12px;
+  font-family:var(--font-meta);
+  font-size:12px;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:500;
+  transition:color .15s;
+}
+
+.card:hover .go{color:var(--accent-soft);}
+
+/* ---- Disclosure ---- */
+.disclosure{
+  margin:40px auto 0;
+  max-width:760px;
+  text-align:center;
+  color:var(--ink-faint);
+  font-family:var(--font-meta);
+  font-size:12px;
+  letter-spacing:.03em;
+  border-top:1px solid var(--hairline);
+  padding-top:24px;
+}
+
+/* ---- Footer ---- */
+footer{
+  padding:36px 0 64px;
+  text-align:center;
+  color:var(--ink-faint);
+  font-family:var(--font-meta);
+  font-size:12px;
+  letter-spacing:.05em;
+  border-top:1px solid var(--hairline);
+  margin-top:28px;
+}
+
+footer a{
+  color:var(--accent);
+  text-decoration:none;
+  transition:color .15s;
+}
+
+footer a:hover{color:var(--accent-soft);}
+
+/* ---- Responsive ---- */
+@media(max-width:560px){
+  .grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
+
 <header>
   <div class="wrap">
     <span class="badge">Independent buying guides</span>
-    <h1>Honest <span class="accent">picks</span> for the gear you actually use</h1>
+    <h1>Honest picks for the gear you actually use</h1>
     <p class="lead">Thirteen focused guides, one place. Each site compares the real options in its category so you can buy once and skip the research rabbit hole.</p>
+    <div class="rule-accent"></div>
   </div>
 </header>
+
 <main>
   <div class="wrap">
     <div class="grid">
-      <a class="card" href="https://lee-fuhr.github.io/coffee-grinder-picks/"><h2>Coffee grinder picks</h2><p>Best burr grinders for espresso and pour-over, compared head to head.</p><span class="go">Read the guide →</span></a>
-      <a class="card" href="https://lee-fuhr.github.io/home-espresso-hub/"><h2>Home espresso hub</h2><p>Espresso machines and gear for the home barista, from starter to serious.</p><span class="go">Read the guide →</span></a>
-      <a class="card" href="https://lee-fuhr.github.io/blender-picks/"><h2>Blender picks</h2><p>High-performance blenders for smoothies, soups and nut butters.</p><span class="go">Read the guide →</span></a>
-      <a class="card" href="https://lee-fuhr.github.io/home-gym-picks/"><h2>Home gym picks</h2><p>Equipment guides for building a home gym in any amount of space.</p><span class="go">Read the guide →</span></a>
-      <a class="card" href="https://lee-fuhr.github.io/office-chair-picks/"><h2>Office chair picks</h2><p>Ergonomic office chairs that hold up to long work days.</p><span class="go">Read the guide →</span></a>
-      <a class="card" href="https://lee-fuhr.github.io/standing-desk-picks/"><h2>Standing desk picks</h2><p>Standing desks and converters compared on stability and value.</p><span class="go">Read the guide →</span></a>
-      <a class="card" href="https://lee-fuhr.github.io/monitor-picks/"><h2>Monitor picks</h2><p>Monitors for work, gaming and creative work at every budget.</p><span class="go">Read the guide →</span></a>
-      <a class="card" href="https://lee-fuhr.github.io/mechanical-keyboard-picks/"><h2>Mechanical keyboard picks</h2><p>Mechanical keyboards for typing feel and gaming response.</p><span class="go">Read the guide →</span></a>
-      <a class="card" href="https://lee-fuhr.github.io/headphone-picks/"><h2>Headphone picks</h2><p>Headphones and earbuds reviewed for sound, comfort and value.</p><span class="go">Read the guide →</span></a>
-      <a class="card" href="https://lee-fuhr.github.io/robot-vacuum-picks/"><h2>Robot vacuum picks</h2><p>Robot vacuums for every floor type and budget.</p><span class="go">Read the guide →</span></a>
-      <a class="card" href="https://lee-fuhr.github.io/mattress-picks/"><h2>Mattress picks</h2><p>Mattresses compared by sleep style and body type.</p><span class="go">Read the guide →</span></a>
-      <a class="card" href="https://lee-fuhr.github.io/air-purifier-picks/"><h2>Air purifier picks</h2><p>Air purifiers for allergies, smoke and everyday clean air.</p><span class="go">Read the guide →</span></a>
-      <a class="card" href="https://lee-fuhr.github.io/pressure-washer-pro/"><h2>Pressure washer pro</h2><p>Pressure washer reviews and buying guides for home and driveway.</p><span class="go">Read the guide →</span></a>
+      <a class="card" href="https://lee-fuhr.github.io/coffee-grinder-picks/">
+        <h2>Coffee grinder picks</h2>
+        <p>Best burr grinders for espresso and pour-over, compared head to head.</p>
+        <span class="go">Read the guide &rarr;</span>
+      </a>
+      <a class="card" href="https://lee-fuhr.github.io/home-espresso-hub/">
+        <h2>Home espresso hub</h2>
+        <p>Espresso machines and gear for the home barista, from starter to serious.</p>
+        <span class="go">Read the guide &rarr;</span>
+      </a>
+      <a class="card" href="https://lee-fuhr.github.io/blender-picks/">
+        <h2>Blender picks</h2>
+        <p>High-performance blenders for smoothies, soups and nut butters.</p>
+        <span class="go">Read the guide &rarr;</span>
+      </a>
+      <a class="card" href="https://lee-fuhr.github.io/home-gym-picks/">
+        <h2>Home gym picks</h2>
+        <p>Equipment guides for building a home gym in any amount of space.</p>
+        <span class="go">Read the guide &rarr;</span>
+      </a>
+      <a class="card" href="https://lee-fuhr.github.io/office-chair-picks/">
+        <h2>Office chair picks</h2>
+        <p>Ergonomic office chairs that hold up to long work days.</p>
+        <span class="go">Read the guide &rarr;</span>
+      </a>
+      <a class="card" href="https://lee-fuhr.github.io/standing-desk-picks/">
+        <h2>Standing desk picks</h2>
+        <p>Standing desks and converters compared on stability and value.</p>
+        <span class="go">Read the guide &rarr;</span>
+      </a>
+      <a class="card" href="https://lee-fuhr.github.io/monitor-picks/">
+        <h2>Monitor picks</h2>
+        <p>Monitors for work, gaming and creative work at every budget.</p>
+        <span class="go">Read the guide &rarr;</span>
+      </a>
+      <a class="card" href="https://lee-fuhr.github.io/mechanical-keyboard-picks/">
+        <h2>Mechanical keyboard picks</h2>
+        <p>Mechanical keyboards for typing feel and gaming response.</p>
+        <span class="go">Read the guide &rarr;</span>
+      </a>
+      <a class="card" href="https://lee-fuhr.github.io/headphone-picks/">
+        <h2>Headphone picks</h2>
+        <p>Headphones and earbuds reviewed for sound, comfort and value.</p>
+        <span class="go">Read the guide &rarr;</span>
+      </a>
+      <a class="card" href="https://lee-fuhr.github.io/robot-vacuum-picks/">
+        <h2>Robot vacuum picks</h2>
+        <p>Robot vacuums for every floor type and budget.</p>
+        <span class="go">Read the guide &rarr;</span>
+      </a>
+      <a class="card" href="https://lee-fuhr.github.io/mattress-picks/">
+        <h2>Mattress picks</h2>
+        <p>Mattresses compared by sleep style and body type.</p>
+        <span class="go">Read the guide &rarr;</span>
+      </a>
+      <a class="card" href="https://lee-fuhr.github.io/air-purifier-picks/">
+        <h2>Air purifier picks</h2>
+        <p>Air purifiers for allergies, smoke and everyday clean air.</p>
+        <span class="go">Read the guide &rarr;</span>
+      </a>
+      <a class="card" href="https://lee-fuhr.github.io/pressure-washer-pro/">
+        <h2>Pressure washer pro</h2>
+        <p>Pressure washer reviews and buying guides for home and driveway.</p>
+        <span class="go">Read the guide &rarr;</span>
+      </a>
     </div>
-    <p class="disclosure">As an Amazon Associate, the guides linked here earn from qualifying purchases. Recommendations are made independently — the commission never changes the pick.</p>
+    <p class="disclosure">As an Amazon Associate, the guides linked here earn from qualifying purchases. Recommendations are made independently. The commission never changes the pick.</p>
   </div>
 </main>
+
 <footer>
-  <div class="wrap">© 2026 · Curated buying guides · <a href="https://lee-fuhr.github.io/coffee-grinder-picks/">Start with coffee grinders</a></div>
+  <div class="wrap">
+    &copy; 2026 &middot; Curated buying guides &middot; <a href="https://lee-fuhr.github.io/coffee-grinder-picks/">Start with coffee grinders</a>
+  </div>
 </footer>
+
 </body>
 </html>
