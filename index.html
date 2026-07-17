@@ -193,6 +193,47 @@ footer a{
 
 footer a:hover{color:var(--accent-soft);}
 
+/* ---- Store section ---- */
+.store-section{
+  margin-top:48px;
+  border:2px solid var(--accent);
+  border-radius:12px;
+  padding:32px 32px 28px;
+  background:var(--paper-2);
+}
+
+.store-section .badge{margin-bottom:16px;}
+
+.store-section h2{
+  font-family:var(--font-head);
+  font-size:24px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:10px;
+}
+
+.store-section p{
+  color:var(--ink-soft);
+  font-family:var(--font-body);
+  font-size:15px;
+  line-height:1.6;
+  max-width:640px;
+}
+
+.store-link{
+  display:inline-block;
+  margin-top:18px;
+  font-family:var(--font-meta);
+  font-size:12px;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:500;
+  transition:color .15s;
+}
+
+.store-link:hover{color:var(--accent-soft);}
+
 /* ---- Responsive ---- */
 @media(max-width:560px){
   .grid{grid-template-columns:1fr;}
@@ -278,6 +319,12 @@ footer a:hover{color:var(--accent-soft);}
         <p>Pressure washer reviews and buying guides for home and driveway.</p>
         <span class="go">Read the guide &rarr;</span>
       </a>
+    </div>
+    <div class="store-section">
+      <span class="badge">Digital tools</span>
+      <h2>Messaging tools &amp; templates</h2>
+      <p>Worksheets and frameworks for B2B founders and marketers — homepage positioning, value propositions, cold outreach, and internal team alignment. Instant download, immediate use.</p>
+      <a class="store-link" href="https://lee-fuhr.github.io/store/">See the full library &rarr;</a>
     </div>
     <p class="disclosure">As an Amazon Associate, the guides linked here earn from qualifying purchases. Recommendations are made independently. The commission never changes the pick.</p>
   </div>
