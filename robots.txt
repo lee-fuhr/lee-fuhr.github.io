@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://reviews.leefuhr.com/sitemap.xml
 Sitemap: https://lee-fuhr.github.io/sitemap.xml
 Sitemap: https://lee-fuhr.github.io/store/sitemap.xml
