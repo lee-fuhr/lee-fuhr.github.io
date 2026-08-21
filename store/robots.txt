@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lee-fuhr.github.io/store/sitemap.xml
+Sitemap: https://reviews.leefuhr.com/store/sitemap.xml
