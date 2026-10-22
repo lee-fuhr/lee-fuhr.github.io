@@ -1,0 +1,177 @@
+  /* ============ MASTHEAD ============ */
+  .masthead{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    flex-wrap:wrap; gap:var(--space-s) var(--space-m);
+    padding-top:var(--space-l); padding-bottom:var(--space-m);
+    /* The cover plate below carries its own top border, so a hairline here put
+       two parallel rules a single spacing step apart. The plate's edge is the
+       stronger one, so the masthead gives its rule up. */
+  }
+  .masthead-id{ display:flex; flex-direction:column; gap:var(--space-xs); }
+  /* The brand is the way home from every page (Lee, live 2026-09-18 8:18pm:
+     "the left side of the nav header has to link back to home"). It carries no
+     link underline, and the name answers on hover the way the nav links do. */
+  .masthead-brand{ display:flex; align-items:center; gap:var(--space-s); text-decoration:none; color:inherit; }
+  .masthead-brand:hover .m-hard, .masthead-brand:focus-visible .m-hard{ color:var(--red); }
+  .masthead-brand img{ height:36px; width:auto; display:block; }
+  /* 24em, not 32em: at 32em this line sat right on the one-line threshold, so
+     a fallback font a few percent narrower set it on one line and the page
+     jumped when Literata arrived. Balanced, it breaks after "things" either
+     way, as before. */
+  .masthead-headline{ max-width:24em; margin:0; text-wrap:balance; }
+  /* Site nav, added 2026-09-18 per Lee's live note: "what about my other
+     site pages?" JetBrains Mono at --t-micro, ink, the same red-underline
+     .lnk treatment as every other inline link on the page -- no new link
+     style invented. min-height plus the global a::after overlay (inset -5px
+     each side) clears the 24px tap-target floor at every size. */
+  .masthead-nav{
+    display:flex; align-items:center; flex-wrap:wrap;
+    gap:var(--space-s) var(--space-m);
+  }
+  .masthead-nav a{ display:inline-flex; align-items:center; min-height:24px; }
+  .masthead-nav a[aria-current="page"]{ background-size:100% 4px; background-image:linear-gradient(var(--ink),var(--ink)); } /* shared, was page-scoped on 2 of 9 pages */
+  /* ============ THE STACK ============
+     No padding-bottom here: the footer is the last thing inside main and
+     already carries its own generous bottom padding (--space-xl). Adding a
+     second bottom padding on main stacked var(--space-l) of empty space
+     below the already-padded footer -- the phantom gap under the page. */
+  main{ padding-top:var(--space-l); }
+  .stack{ display:flex; flex-direction:column; gap:var(--space-xl); }
+
+  /* A skip link that is off-screen with no :focus rule is not a skip link, it is
+     a hidden link. c1's was exactly that -- parked at left:-9999px in an inline
+     style with nothing to bring it back -- so a keyboard user had no way to
+     reach it and no way to skip anything. */
+  .skip-link{
+    position:absolute; left:-9999px; top:0; z-index:200;
+    background:var(--ink); color:var(--oaktag);
+    padding:var(--space-s); text-decoration:none;
+  }
+  .skip-link:focus{ left:var(--space-s); top:var(--space-s); }
+
+
+  /* ============ TAP TARGETS ============
+     Measured at 1440: seven to ten links and inputs per page came in under the
+     24px minimum -- text links at 19 to 23px tall and form checkboxes at 14 to
+     15px. A checkbox that small is a real miss on a phone.
+
+     Text links get their hit area enlarged by an invisible overlay rather than
+     by padding, because padding moves the page and the last time something
+     "harmless" moved the page it added 1,284px to it. The overlay changes what
+     a thumb can hit and nothing else. */
+  a, button{ position:relative; }
+  a::after, button::after{
+    content:""; position:absolute; inset:-5px -5px; pointer-events:auto;
+  }
+  a:has(img)::after, a:has(figure)::after, .case::after, .cell::after{ content:none; }
+
+  /* Every section is a container, on Lee's instruction 2026-09-14 9:25am:
+     "Let's try every section containered, I liked that in one of your earlier
+     concepts." Two sections carried a border before and seven did not, so the
+     page read as loose copy with two boxes dropped into it. A manual is a run
+     of plates, so now every one is a plate. */
+  .block{ border:1px solid var(--ink); padding:var(--space-l); position:relative; }
+  /* Lee, live 2026-09-17: "the container is to be consistent." Every
+     plate border is 1px; research and offers used to carry 2px. */
+  .block.plate{ padding:var(--space-l); }
+  .block.flood{ border:0; padding:var(--space-l); position:relative; z-index:1; }
+  /* The cover builds its own internal rules, so it keeps its zero padding. */
+  .block.cover{ padding:0; }
+
+  /* ---- THE KEYED RAIL ----
+     Each plate gets a letter, outdented into the gutter, and a short tick
+     that lands on the plate's own top border and reads as that border
+     continuing out. Restored 2026-09-16: an earlier pass dropped the whole
+     rail along with the one thing Lee actually wanted gone, the faint
+     full-height spine that used to run the whole stack. That spine is not
+     rebuilt here -- only the tick and the letter, which is what he asked
+     to keep.
+
+     Sticky, 2026-09-21 (Lee, live: "let's make the little index letters
+     with their line stick to the top of the screen and scroll away with
+     the bottom of their box"). A sticky box rests, when unstuck, exactly
+     where it would sit as position:static -- so the mark that sticks has
+     to be genuinely first in the plate's own flow. ::after generates AFTER
+     every real child, which on a tall plate rests near the plate's own
+     BOTTOM until scroll drags it past the threshold: a visible jump, not a
+     pin. So both marks now live on ::before (the letter is its text
+     content; the tick is a small background rectangle drawn behind that
+     text) and ::after is retired below.
+
+     ::before still has to sit outside .block's own padding, the way the
+     old absolutely-positioned pair did, AND keep its old poke above the
+     plate's own border (the letter always sat -0.75em proud of it, the
+     tick -1px). Every bit of that -- the padding pull-out, the poke, the
+     gutter width -- is folded into margin, not top/left: `top:0` is a
+     clean flush pin at the viewport edge with nothing to clip.
+
+     Two things forced margin over inset offsets, both confirmed live in a
+     throwaway test page:
+     - a sticky box with no horizontally-scrolling ancestor never applies
+       its `left`/`right` inset at all (a `left:-50px` sat inert while a
+       matching `top` worked), so the whole horizontal offset has to be
+       margin-left.
+     - a sticky box's margin is NOT re-applied once it is actually stuck
+       (only `top`/`bottom` are, against the scrollport edge) -- so a
+       negative top matching the letter's old -0.75em poke reproduced the
+       poke while resting, then clipped a visible sliver of the letter off
+       the top of the browser window once stuck, because there is no page
+       above the viewport edge to poke into. Moving the whole poke into
+       margin-top keeps the identical resting position (margin still
+       applies there) while leaving the stuck position flush and
+       uncropped.
+
+     margin-bottom is whatever cancels the box's own margin-top and height
+     back to zero net footprint, so the real content after it keeps its
+     full padding-top undisturbed. */
+  .block[data-fig]::before{
+    content:attr(data-fig); display:block; position:sticky;
+    margin:calc(-1 * var(--plate-pad) - 0.75em) 0 calc(var(--plate-pad) - 0.75em) calc(-1 * var(--plate-pad) - var(--space-m) - 1.9em);
+    top:0;
+    width:calc(var(--space-m) + 1.9em);
+    font-family:'JetBrains Mono',ui-monospace,monospace; font-weight:700;
+    font-size:var(--t-micro); line-height:1.5; color:var(--ink);
+    background-image:linear-gradient(var(--ink),var(--ink));
+    background-repeat:no-repeat;
+    background-position:right 0 top calc(0.75em - 1px);
+    background-size:var(--space-m) 1px;
+  }
+  /* r10, 2026-09-22. Lee: "it should stop following when it gets to
+     aligning with the very bottom of the box." Measured live (Playwright,
+     bisecting scroll position pixel by pixel): on a 6000px-plus plate this
+     mark kept sticking to the viewport top for another ~650px of scroll
+     AFTER the plate's own bottom border had fully scrolled past -- following
+     the NEXT plate's content, not just "not stopping cleanly." The cause
+     isn't the sticky math itself (the margin cancellation above nets this
+     pseudo to ~0 flow height on purpose, so other content underneath still
+     gets its full padding-top); something about that zero-height box makes
+     the browser's own stop-at-container-bottom constraint unreliable at
+     this scale, confirmed by bisection rather than assumed from the CSS
+     alone (doctrine #64). A JS-driven clamp is the reliable fix:
+     case-motion.js watches every .block[data-fig] with an
+     IntersectionObserver and adds .fig-out the instant the block's own
+     bottom edge scrolls above the viewport top -- exactly the point a
+     plain (non-sticky) mark would already have scrolled away with its box.
+     This rule only has to hide it then; showing it again on scroll-up is
+     the class coming back off. */
+  .block[data-fig].fig-out::before{ visibility:hidden; }
+  .block[data-fig]::after{ content:none; }
+  /* The hero (.cover) pads 0, not --plate-pad, so only the poke and the
+     gutter offset remain. */
+  .block.cover[data-fig]::before{ margin:-0.75em 0 -0.75em calc(-1 * var(--space-m) - 1.9em); }
+  /* Lee, live 2026-09-17: "This little line is only supposed to be orange
+     when the section is an orange fill." B, the one flood, is the only red
+     tick, and B has no border, so the tick meets the red fill on the
+     fill's own top row. Every other tick is ink, and every letter is ink,
+     B's included. The red key that followed the scroll is gone with it. */
+  .block.flood[data-fig]::before{
+    background-image:linear-gradient(var(--red),var(--red));
+    background-position:right 0 top 0.75em;
+  }
+
+  /* ============ THE CLOSING PLATE ============
+     Lee, live 2026-09-16: the closing K plate moves from the dark module to
+     the red flood, matching B. The page's one dark module is now the
+     Complete size row instead (see .size-lead below). Both floods plus that one
+     dark row is the accepted shape for this page. */
+

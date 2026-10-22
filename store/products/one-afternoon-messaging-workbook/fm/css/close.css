@@ -1,0 +1,229 @@
+  /* ============ CLOSE ============
+     This is the full-page call to action, so it takes the red flood, same
+     as B -- but the section itself stays a plain bordered plate (the "every
+     section is a container" rule) and only the booking card inside it is
+     red. The "Not sure yet?" line sits below that card, back on oaktag, in
+     its own quiet space rather than shrunk small on top of red. */
+  .close{
+    background:var(--red); padding:var(--space-l);
+    display:flex; flex-direction:column; align-items:flex-start; gap:var(--space-s);
+  }
+  /* The red card carries the headline and the one action, nothing else: at
+     body size ink on poster red measures 3.9:1, which only passes as large
+     text, so the sentence that supports the action reads as body copy on
+     oaktag underneath instead of being set large enough to survive the red. */
+  .close{ gap:var(--space-m); }
+  /* Critique fix, heuristic 8: the card was a full-width panel about two
+     thirds empty red. It now takes the width of the headline and the button
+     it holds, so the red is the size of its own content. */
+  .close{ width:fit-content; max-width:100%; }
+  .close h2{ margin-bottom:0; }
+  /* The rail: the booking card and its quiet lines keep the column they had,
+     and the two things a visitor can do on their own sit beside them in the
+     same 300px measure the turn's aside and the bio photo use. Below 901 the
+     rail follows the card instead of squeezing it. Lee, live 2026-09-18
+     5:35pm: "let's make these very secondary cards locked up to the right of
+     the main one." The rail's own breakpoint moves from the shared 1181 down
+     to 901 -- close-main's booking card needs far less room than the cover or
+     bio grids that share 1181, and locking the rail up beside it earlier is
+     the whole point. Both columns are direct grid children with
+     align-items:start, so the rail's top (the "More from me" label) already
+     sits flush with close-main's own top (the h2) with no extra rule needed. */
+  .close-plate{ display:grid; grid-template-columns:minmax(0,1fr); gap:var(--space-l); align-items:start; }
+  @media (min-width:901px){ .close-plate{ grid-template-columns:minmax(0,1fr) minmax(0,300px); } }
+  /* r10, 2026-09-22. Lee: "Layout is still busted" -- true on the homepage
+     too, not just the case pages (measured, not assumed: doctrine #64). The
+     keyed rail's sticky letter (.block[data-fig]::before, masthead.css) is
+     real generated content with display:block, so once .close-plate turns
+     on display:grid it becomes an uncounted THIRD grid item ahead of
+     .close-main and .tools in source order. Auto-placement then seats the
+     letter in row 1 col 1, bumps .close-main into row 1 col 2 (the rail's
+     own slot), and drops .tools alone into row 2 -- the booking card renders
+     in the 300px rail column and the tools card spans full width underneath
+     it, on every page that carries this component. Fix: give the letter an
+     explicit cell instead of letting it auto-flow, so the two real content
+     columns keep the slots the grid-template-columns rule above actually
+     describes. */
+  .close-plate[data-fig]::before{ grid-column:1; grid-row:1; }
+  .close-plate > .close-main{ grid-column:1; grid-row:1; }
+  @media (min-width:901px){ .close-plate > .tools{ grid-column:2; grid-row:1; } }
+  .tools{ display:flex; flex-direction:column; gap:var(--space-s); }
+  /* r8: was two separate bordered cards, which is a list of two (doctrine
+     #58). One card now holds both links, so the rail reads as one quiet
+     card with two entries rather than a two-item list. The card keeps its
+     hairline border (doctrine #17, border only, never border plus shadow)
+     and one padding token on all four sides (doctrine #62), clearly
+     lighter than close-main's bordered .close-plate frame around it. */
+  .tool{
+    display:flex; flex-direction:column; gap:var(--space-s);
+    border:1px solid var(--hair); padding:var(--space-s);
+  }
+  /* Each link plus its line is its own group, xs apart (doctrine #67); a
+     hairline plus the group step separates it from the entry below, the
+     same idiom .way + .way already uses in the offers ledger. */
+  .tool-item{ display:flex; flex-direction:column; gap:var(--space-xs); }
+  .tool-item + .tool-item{ border-top:1px solid var(--hair); padding-top:var(--space-s); }
+  /* Lee, 2026-09-20 5:13p, "this style is too many HRs": a hairline between
+     rows plus a painted rule under every title reads as two lines with
+     nothing between them (doctrine #54). The hairline is the row divider;
+     the title's own rule now paints only on hover/focus, the arrow carries
+     the affordance at rest. Same fix as .study-item's title link. */
+  .tool-item .lnk{ background-size:0 2px; }
+  .tool-item .lnk:hover, .tool-item .lnk:focus-visible{ background-size:100% 2px; }
+  .tool p{ margin:0; }
+  .quiet{ margin-top:var(--space-m); display:flex; flex-direction:column; gap:var(--space-s); }
+  .quiet p{ margin:0; max-width:34em; }
+  /* The mono lines set their own measure: 34em of body text is 44em of the
+     label step, so both columns rag at the same place. */
+  .quiet p.m{ max-width:44em; }
+  /* On a phone the plate already pads m, so the flood pads s: at m the
+     button ran past the red panel's own padding to its edge. */
+  @media (max-width:860px){ .close{ padding:var(--space-s); } }
+
+  footer.colophon{
+    max-width:1440px; margin:0 auto;
+    padding:var(--space-l) var(--space-l) var(--space-xl);
+    display:flex; justify-content:flex-start; align-items:center;
+    gap:var(--space-s) var(--space-m); flex-wrap:wrap;
+  }
+  /* Wired on this page: the console message and the print treatment. Quiet
+     mono, not a bulleted list -- doctrine #58 rejects a two-item list, this
+     is one line of prose instead. Full strength, not dimmed: at .68 the
+     focus ring on these buttons fell under 3:1. */
+
+  @media (max-width:860px){
+    .wrap{ padding:0 var(--space-s); }
+    .split{ grid-template-columns:1fr; gap:var(--space-m); }
+    /* Refine pass: the stage sets the height and the mark slices into it.
+       With height:auto the mark grew to about 830px at 768. */
+    .cover-stage{ height:clamp(300px, 55vw, 420px); min-height:0; }
+    .figmark{ width:100%; height:100%; }
+    .block{ padding:var(--space-m); }
+    .block.flood, .block.plate{ padding:var(--space-m); }
+    .stack{ gap:var(--space-l); }
+    .cases, .voices{ gap:var(--space-m); }
+    .aside-photo-frame{ max-width:160px; }
+    /* Stacked, three one-line items read as one group, so s between them. */
+    footer.colophon{ padding:var(--space-m) var(--space-s) var(--space-l); row-gap:var(--space-s); }
+
+    /* The gutter shrinks from 80px to 16px here, too tight for the rail's
+       40px offset, so the rail moves inside the measure. Refine pass: its
+       footprint drops from m to s. The tick is s long and still lands on the
+       plate's top border; the letter sits on the tick's outer end, above it.
+       That hands 24px back to the text column. */
+    .block[data-fig]{ margin-left:var(--space-s); }
+    /* Merged onto ::before (see masthead.css) -- here the letter and the
+       tick share the same left edge, so the tick's rectangle now spans the
+       merged box's full width instead of hugging its right edge. Sticky
+       ignores `left` with no horizontally-scrolling ancestor and never
+       re-applies margin once stuck (both per the note in masthead.css), so
+       the gutter offset is margin-left and the -1.9em poke joins
+       margin-top -- `top` stays the base rule's flush 0, nothing to
+       override here. --plate-pad (not a hardcoded --space-m) still cancels
+       the padding, because .block's own padding keeps changing again
+       inside this same breakpoint's range (--space-s below 560) and
+       --plate-pad already tracks whichever one is currently live -- a
+       hardcoded value here rendered the letter off the left edge of a
+       390-wide phone entirely, caught live rather than assumed fixed. */
+    .block[data-fig]::before{
+      margin:calc(-1 * var(--plate-pad) - 1.9em) 0 calc(var(--plate-pad) + 0.4em) calc(-1 * var(--plate-pad) - var(--space-s));
+      width:var(--space-s);
+      background-position:left 0 top calc(1.9em - 1px);
+      background-size:var(--space-s) 1px;
+    }
+    .block.flood[data-fig]::before{ background-position:left 0 top 1.9em; }
+  }
+
+  /* Refine pass, between phone and laptop. At 1024 the l padding left the
+     three steps 181px wide and the turn copy 322px beside its aside. The
+     plates pad m here, and the turn's aside drops under its copy. */
+  @media (min-width:861px) and (max-width:1180px){
+    .block, .block.plate, .block.flood{ padding:var(--space-m); }
+    .close{ padding:var(--space-m); }
+    .steps{ gap:var(--space-m); }
+  }
+  @media (max-width:1180px){
+    :root{ --plate-pad:var(--space-m); }
+    .split{ grid-template-columns:minmax(0,1fr); gap:var(--space-m); }
+    .aside{ max-width:30em; }
+    /* Stacked, the copy leads and the aside follows it, whatever the source
+       order the float needs above. */
+    #turn .aside{ order:2; }
+  }
+
+  /* Refine pass, phones. Every plate pads s on all sides, so a 390 screen
+     keeps about 310px of text instead of 238px, and the buttons pad s so
+     "Book a 30-minute call" fits a 320 screen without leaving its plate. */
+  @media (max-width:560px){
+    :root{ --plate-pad:var(--space-s); }
+    .block, .block.plate, .block.flood{ padding:var(--space-s); }
+    .cover-title{ padding:var(--space-m) var(--space-s); }
+    .size{ padding:var(--space-m) var(--space-s); }
+    .btn{ padding:var(--space-s); white-space:normal; max-width:100%; }
+    /* r5: inside a flex box a wrapped label fills the row and shoves the
+       arrow to the far right edge, which no other button does. Set as plain
+       inline text, the arrow follows the last word on whichever line it
+       lands on. The research bar keeps its full width as a block. */
+    .btn{ display:inline-block; text-align:center; }
+    .btn.research-btn, .offers-foot .btn{ display:block; }
+    .btn .arw{ margin-left:var(--space-xs); }
+    /* s padding is narrower than a 20px heading's .95em hang, so the marker
+       stays inside the column here; the wrap still lines up. */
+    .outdent{ margin-left:0; }
+  }
+
+  /* Refine pass, touch. Text links were 18 to 23px tall with a 5px overlay
+     each side (28 to 33px to a thumb). On a coarse pointer the overlay
+     grows to reach 44px; nothing moves. The two links that share a line of
+     small print get a taller line instead, so their overlays cannot meet. */
+  @media (pointer:coarse){
+    a::after{ inset:-13px -8px; }
+    .quiet .m{ line-height:2.4; }
+    .quiet a::after{ inset:-4px -4px; }
+    /* The answers' enlarged overlays met across an s gap. */
+    .truest{ gap:var(--space-m); }
+  }
+  /* Keep a phrase together without letting it leave the page: an inline-block
+     moves to the next line whole, and only breaks inside when it is wider than
+     the line (it overflowed by 133px at 390 with the reader's text doubled). */
+  .nw{ display:inline-block; text-indent:0; overflow-wrap:anywhere; }
+
+  /* Footer icon row and the colophon plate: css/eggs.css. */
+
+  /* ============ FORCED COLORS ============
+     Second pass, step C. In a high-contrast theme the painted rules and the
+     ink fills are dropped by the browser, so the focus marker, the links and
+     the research figures would vanish. Each gets a system-colour version:
+     a Highlight ring on a focused size, real underlines on links, and in the
+     figures ink is filled CanvasText, red is Canvas with a heavy CanvasText
+     outline, open is plain Canvas; the outline is the edge between
+     segments. */
+  @media (forced-colors: active){
+    .size:focus-visible{ outline:3px solid Highlight; outline-offset:3px; }
+    .lnk, .voice-name-text{ background-image:none; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:.2em; }
+    .lnk:hover{ text-decoration-thickness:4px; }
+    .size:target .size-name, .size:focus-visible .size-name{ text-decoration:underline; text-decoration-thickness:4px; text-underline-offset:.15em; }
+    .block[data-fig]::before, .mark, .whole, .whole span, .key,
+    .cc-steps span{ forced-color-adjust:none; }
+    .block[data-fig]::before, .mark, .cc-steps span{ background:CanvasText; }
+    /* ::before now carries the fig letter's own text too (the sticky merge
+       moved it off ::after, see masthead.css) -- forced-color-adjust:none
+       above stops the browser auto-mapping that text color for us, so it
+       needs its own system color against the CanvasText background just
+       forced onto it, or the letter goes unreadable in high contrast. */
+    .block[data-fig]::before{ color:Canvas; }
+    .whole{ border-color:CanvasText; background:Canvas; }
+    .whole span{ border-left:0; }
+    .whole-none, .whole-q-noask, .key-ink{ background:CanvasText; }
+    .whole-some, .whole-q-none, .key-open{ background:Canvas; }
+    .whole-all, .whole-q-ask, .key-red{
+      background:Canvas; box-shadow:inset 0 0 0 .25em CanvasText;
+    }
+    .key{ border-color:CanvasText; }
+    .key-red{ box-shadow:inset 0 0 0 .15em CanvasText; }
+    .count-field{ forced-color-adjust:none; }
+    .cf-dot{ background:CanvasText; }
+    .cf-dot-red{ background:Highlight; }
+    .cf-key{ background:Highlight; }
+  }
+

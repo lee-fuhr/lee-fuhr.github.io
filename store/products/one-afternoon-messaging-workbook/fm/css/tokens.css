@@ -1,0 +1,239 @@
+  @font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:800;font-display:swap;
+    src:url(../fonts/big-shoulders-display-800.woff2) format('woff2');
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  @font-face{font-family:'EB Garamond';font-style:normal;font-weight:600;font-display:swap;
+    src:url(../fonts/eb-garamond-600.woff2) format('woff2');
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  @font-face{font-family:'EB Garamond';font-style:italic;font-weight:500 600;font-display:swap;
+    src:url(../fonts/eb-garamond-italic-500-600.woff2) format('woff2');
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  @font-face{font-family:'Literata';font-style:normal;font-weight:400;font-display:swap;
+    src:url(../fonts/literata-opsz-400.woff2) format('woff2');
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  /* Literata 700 for the tentpole words in the plan rows (Lee, 2026-09-21:
+     "bold 'four months' and other things to act as tentpoles"), a real
+     bold cut rather than a browser-smeared 400. */
+  @font-face{font-family:'Literata';font-style:normal;font-weight:700;font-display:swap;
+    src:url(../fonts/literata-opsz-700.woff2) format('woff2');
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;
+    src:url(../fonts/jetbrains-mono-400-700.woff2) format('woff2');
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+  /* Optimize and harden pass: width-matched fallbacks. Before a web font
+     arrives (or if it never does), the installed face is scaled to the web
+     font's average width, measured on this page's own copy, so lines wrap
+     in the same places. On a slow connection the masthead line used to fit
+     on one Georgia line, then wrap when Literata landed, pushing the page
+     down 29px. JetBrains Mono and Menlo are within 0.4%, so mono has none. */
+  @font-face{font-family:'Literata fallback';font-style:normal;font-weight:400;font-display:swap;
+    src:local('Georgia');size-adjust:104%}
+  @font-face{font-family:'EB Garamond fallback';font-style:normal;font-weight:600;font-display:swap;
+    src:local('Georgia Bold'), local('Georgia-Bold');size-adjust:79%}
+  @font-face{font-family:'EB Garamond fallback';font-style:italic;font-weight:500 600;font-display:swap;
+    src:local('Georgia Italic'), local('Georgia-Italic');size-adjust:85.4%}
+  @font-face{font-family:'Big Shoulders fallback';font-style:normal;font-weight:800;font-display:swap;
+    src:local('Impact');size-adjust:91.5%}
+
+
+  /*
+    ── TYPE: nine roles on the six-step fluid scale. ───────────────────────────
+    Measured in the render (polish pass): 16 computed styles at 1440, because
+    the ink module and the red flood reverse some roles to oaktag.
+    S1  Big Shoulders Display 800, --t-hero, ink   h1, once
+    S2  Big Shoulders Display 800, --t-h2          the flood line (ink, one oaktag word)
+    S3  EB Garamond 600, --t-h2, ink               h2, monthly prices
+    S4  EB Garamond 600, --t-h3, ink               h3, size names, the lead line
+    S5  EB Garamond 500 italic, --t-lead, ink      pulled-out lines, quotes
+    S6  Literata 400, --t-body, warm ink           all running copy
+    S7  JetBrains Mono 400, --t-micro, warm ink    captions, secondary notes
+    S8  JetBrains Mono 700, --t-micro, ink         names, labels, quiet links
+    S9  JetBrains Mono 700, --t-micro, oaktag      type on the ink button
+    Line-height and letter-spacing belong to the step, not the element. No px
+    font-size anywhere. Every inline link is a background-gradient rule, never a
+    border or an underline, so no link ever stacks a second line under a rule.
+
+    ── SPACING: five steps. XS 8, S 16, M 40, L 80, XL 120. ────────────────────
+    A block's own padding is one token on all four sides. XL is only ever the
+    gap between blocks.
+  */
+  :root{
+    --oaktag:#E9DDC5;
+    --ink:#1A1816;
+    --warmink:#2B2722;
+    --red:#D4442B;
+    /* DESIGN.md's hair-on-oaktag. */
+    --hair: rgba(26,24,22,.18);
+    /* Round 8: the same hairline for the one ink module, and the quiet
+       step of each ground's own text ink, for rows a plan inherits from
+       the plan before it. Translucent, never a mid gray: ink at .65 on
+       oaktag reads 4.8:1, oaktag at .6 on ink 5.2:1. */
+    --hair-on-ink: rgba(233,221,197,.28);
+    --ink-quiet: rgba(26,24,22,.65);
+    --oaktag-quiet: rgba(233,221,197,.6);
+
+    /* Second pass: every endpoint and constant is in rem, so a reader who sets
+       a larger default text size gets larger type. At a 16px root the px
+       equivalents are, in order: micro 12 to 15, body 16 to 20, lead 20 to 26,
+       h3 22 to 34, h2 32 to 48, hero 52 to 96. Lead, h3 and hero took the
+       director's flatter scale in the same pass. */
+    --t-micro: clamp(0.75rem,  0.3vw + 0.59375rem, 0.9375rem);
+    --t-body:  clamp(1rem,     0.5vw + 0.6875rem,  1.25rem);
+    --t-lead:  clamp(1.25rem,  0.9vw + 0.625rem,   1.625rem);
+    --t-h3:    clamp(1.375rem, 1.4vw + 0.5625rem,  2.125rem);
+    --t-h2:    clamp(2rem,     2.2vw + 0.5rem,     3rem);
+    --t-hero:  clamp(3.25rem,  3.6vw + 1.5rem,     6.75rem);
+    /* The poster step, 40px to 80px. Used by the three prices and by nothing
+       else on the page, so it cannot quietly become a second headline size. */
+    --t-poster: clamp(2.5rem,  4vw + 0.75rem,     5rem);
+    /* --t-h3 with its floor raised to 24px, for the one lead line set on the
+       red flood. Ink on poster red measures 3.92:1, which only passes as large
+       text, so it never drops under 24px. Identical to --t-h3 from 1072px up. */
+    --t-h3-flood: clamp(1.5rem, 1.4vw + 0.5625rem, 2.125rem);
+    /* One height for every part-to-whole bar. */
+    --bar-h: var(--space-m);
+    /* One line-height for every line set at the h3 step (h3 and .lead). */
+    --lh-h3: 1.25;
+
+    --space-xs: 8px;
+    --space-s: 16px;
+    --space-m: 40px;
+    --space-l: 80px;
+    --space-xl: 120px;
+    /* What a plate pads at this width. Mirrors the .block.plate padding
+       rules below, so the count field can bleed to the inside of its own
+       border without hard-coding a number at each breakpoint. */
+    --plate-pad: var(--space-l);
+  }
+  *{box-sizing:border-box;}
+  html{overflow-x:clip}
+  @media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+  body{
+    margin:0;
+    background:var(--oaktag);
+    color:var(--warmink);
+    font-family:'Literata', 'Literata fallback', Georgia, serif;
+    font-size:var(--t-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    /* A word too long for its column breaks instead of leaving the page. */
+    overflow-wrap:break-word;
+  }
+  ::selection{ background:var(--ink); color:var(--oaktag); }
+
+  h2,h3{
+    font-family:'EB Garamond', 'EB Garamond fallback', Georgia, serif;
+    font-weight:600;
+    color:var(--ink);
+    margin:0;
+  }
+  /* h1 is the one Display use on the page, per the critique: Big Shoulders
+     Display 800 only for the h1 and the flood line. Everything else stays
+     EB Garamond, Literata or JetBrains Mono. */
+  h1{
+    font-family:'Big Shoulders Display', 'Big Shoulders fallback', Impact, sans-serif;
+    font-weight:800;
+    color:var(--ink);
+    margin:0;
+  }
+  h1,h2,h3{ text-wrap:balance; }
+
+  /* ============ MERGE GUARD ============
+     Measured, not assumed. Rendering each concept with docs/site/style.css
+     loaded ahead of its own CSS -- which is what merging into the production
+     site does -- pinned the hero from 75.12px to a flat 88px on the field manual
+     and from 83.2px to 88px on the sleeve. Production carries
+     `.hero h1 { font-size: var(--type-display) }` at (0,1,1), and a concept's
+     bare `h1` at (0,0,1) loses to it silently. The whole fluid type scale goes
+     with it.
+
+     Cut paper survived only by accident: its hero section is `#hero` rather than
+     `.hero`, so production's selector never matched. That is luck, not a design,
+     and it would break the first time somebody renamed a section.
+
+     So every page scopes its hero size under its own body class, at (0,2,1),
+     which wins regardless of which stylesheet loads first -- source order cannot
+     rescue a rule that loses on specificity, and a merge is exactly when nobody
+     is watching. */
+  .c1 h1, .c1 .hero h1, .c1 #hero h1{ font-size:var(--t-hero); }
+  h1{ font-size:var(--t-hero); line-height:1.03; letter-spacing:-0.01em; }
+  h2{ font-size:var(--t-h2); line-height:1.12; max-width:14em; margin-bottom:var(--space-m); }
+  h3{ font-size:var(--t-h3); line-height:var(--lh-h3); }
+
+  /* Refine pass: 34em holds Literata near 70 characters, the same measure
+     the case copy already used, so every running column shares one width.
+     pretty keeps a lone word off the last line. */
+  p{ margin:0 0 var(--space-s); max-width:34em; }
+  p, li, figcaption{ text-wrap:pretty; }
+
+  /* S4, the pulled-out line and every quote */
+  .pull{
+    font-family:'EB Garamond', 'EB Garamond fallback', Georgia, serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:var(--t-lead);
+    line-height:1.4;
+    color:var(--ink);
+    max-width:30em;
+  }
+  /* Stats and key phrases inside a pulled quote get the same italic face's
+     own 600 weight (loaded above at ital,600) rather than a browser-faked
+     bold, which would smear a serif italic at this size. */
+  .pull strong{ font-weight:600; }
+
+  /* Visually hidden but still announced, for the heart glyph's alt text. */
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+  /* S6 / S7 / S8 */
+  .m, .mk-strong, .m-hard, .m-out{
+    font-family:'JetBrains Mono', ui-monospace, monospace;
+    font-size:var(--t-micro);
+    line-height:1.5;
+    letter-spacing:.03em;
+  }
+  .m{ color:var(--warmink); font-weight:400; text-wrap:pretty; }
+  .m-hard{ color:var(--ink); font-weight:700; }
+  .m-out{ color:var(--oaktag); font-weight:700; }
+
+  /* every inline link: a painted rule, not a border and not an underline */
+  a{ color:inherit; text-decoration:none; }
+  .lnk{
+    background-image:linear-gradient(var(--red),var(--red));
+    background-repeat:no-repeat;
+    background-position:0 100%;
+    background-size:100% 2px;
+    padding-bottom:2px;
+    /* Feedback, not movement: the rule thickens, so it stays on under
+       reduced motion. */
+    transition:background-size .15s ease-out;
+    /* Lee, 2026-09-21 5:14pm, a repeat: the rule fits the text, never the
+       column. A .lnk that lands as a flex or grid item would stretch to the
+       column and paint a full-width rule; these two keep it on the words. */
+    width:fit-content; max-width:100%; align-self:flex-start; justify-self:start;
+  }
+  .lnk:hover{ background-size:100% 4px; }
+  a:focus-visible, button:focus-visible{ outline:3px solid var(--red); outline-offset:3px; }
+  /* A red ring on the red flood is invisible, so on red it turns ink. */
+  .flood a:focus-visible, .close a:focus-visible{ outline-color:var(--ink); }
+
+  /* marker squares: an inline-block sits its bottom edge on the text baseline,
+     and the negative indent outdents it out of the measure (C7) */
+  .mark{
+    display:inline-block;
+    width:.4em; height:.4em;
+    background:var(--red);
+    margin-right:.55em;
+  }
+  /* Polish pass: the marker plus its gap is .95em, so the hang is .95em too.
+     At a fixed 16px the second line of a wrapped step heading sat 8px left of
+     the first. The negative margin hangs the marker into the gutter, so the
+     words, not the square, share the column's left edge (doctrine #61). */
+  .outdent{ margin-left:-.95em; padding-left:.95em; text-indent:-.95em; }
+
+  /* Polish pass: a quote that opens on a curly mark hangs the mark, so the
+     first letter lines up with the lines under it. */
+  .hang{ text-indent:-.36em; }
+
+  .wrap{ max-width:1440px; margin:0 auto; padding:0 var(--space-l); position:relative; }
+

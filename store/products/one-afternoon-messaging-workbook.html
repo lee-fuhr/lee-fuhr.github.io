@@ -9,63 +9,115 @@
 <meta property="og:description" content="Twelve steps, one afternoon, and a messaging framework you can hand to anyone who writes for you.">
 <meta property="og:type" content="product">
 <link rel="canonical" href="https://reviews.leefuhr.com/store/products/one-afternoon-messaging-workbook.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&family=Literata:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="one-afternoon-messaging-workbook/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="one-afternoon-messaging-workbook/fm/fonts/big-shoulders-display-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="one-afternoon-messaging-workbook/fm/fonts/literata-opsz-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="one-afternoon-messaging-workbook/fm/fonts/jetbrains-mono-400-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="one-afternoon-messaging-workbook/fm/css/tokens.css">
+<link rel="stylesheet" href="one-afternoon-messaging-workbook/fm/css/masthead.css">
+<link rel="stylesheet" href="one-afternoon-messaging-workbook/fm/css/cover.css">
+<link rel="stylesheet" href="one-afternoon-messaging-workbook/fm/css/close.css">
 <style>
-:root{
-  --paper:#fafafa;--paper-2:#f4f4f4;--ink:#1a1a1a;--ink-soft:#555;
-  --ink-faint:#888;--accent:#1f3a5f;--accent-soft:#2c4f7c;--hairline:#e5e5e5;
-  --font-head:'EB Garamond',Georgia,'Times New Roman',serif;
-  --font-body:'Literata',Georgia,serif;
-  --font-meta:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+/* Page pieces on top of the Field Manual files, same tokens and type roles
+   as check.leefuhr.com. */
+.masthead-brand img{ border-radius:0; }
+main{ padding-top:0; }
+.btn.m-out{ color:var(--oaktag); }
+.btn.big{ min-height:56px; font-size:var(--t-micro); }
+.price{ font-family:'Big Shoulders Display','Big Shoulders fallback',Impact,sans-serif; font-weight:800;
+  font-size:var(--t-poster); line-height:.9; color:var(--ink); margin:0; }
+.buyrow{ display:flex; flex-wrap:wrap; align-items:center; gap:var(--space-s) var(--space-m); }
+.buyrow .btn{ flex:none; }
+.wb-plain p, .wb-hero p{ margin:0; }
+.h3s{ font-family:'Literata','Literata fallback',Georgia,serif; font-weight:700; font-size:var(--t-body); line-height:1.4; color:var(--ink); margin:0; }
+
+/* ---- A: the buy plate ---- */
+.wb-grid{ display:grid; grid-template-columns:minmax(0,1fr); gap:var(--space-m);
+  grid-template-areas:"head" "shot" "body" "more"; }
+@media (min-width:961px){
+  .wb-grid{ grid-template-columns:minmax(0,1fr) minmax(0,500px); column-gap:var(--space-l);
+    grid-template-areas:"head shot" "body shot" "more more"; align-items:start; }
 }
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:var(--font-body);background:var(--paper);color:var(--ink);
-  line-height:1.6;-webkit-font-smoothing:antialiased;}
-a{color:inherit;text-decoration:none;}
-.wrap{max-width:680px;margin:0 auto;padding:0 22px;}
-header{padding:40px 0 30px;border-bottom:1px solid var(--hairline);}
-.back{font-family:var(--font-meta);font-size:11.5px;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--accent);display:inline-block;margin-bottom:26px;}
-.back:hover{color:var(--accent-soft);}
-.tag{font-family:var(--font-meta);font-size:10.5px;letter-spacing:.09em;
-  text-transform:uppercase;color:var(--accent-soft);display:block;margin-bottom:12px;}
-h1{font-family:var(--font-head);font-size:clamp(28px,5vw,40px);font-weight:700;
-  line-height:1.13;letter-spacing:-.01em;color:var(--ink);max-width:600px;}
-.lead{margin:18px 0 0;color:var(--ink-soft);font-size:17.5px;line-height:1.62;
-  max-width:560px;}
-.buy{display:flex;align-items:center;gap:18px;margin:28px 0 16px;flex-wrap:wrap;}
-.price{font-family:var(--font-meta);font-size:15px;letter-spacing:.05em;
-  color:var(--accent);font-weight:700;}
-.cta{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-meta);
-  font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;
-  background:var(--accent);color:var(--paper);border:1px solid var(--accent);
-  border-radius:999px;padding:11px 22px;transition:background .15s,border-color .15s;}
-.cta:hover{background:var(--accent-soft);border-color:var(--accent-soft);color:var(--paper);}
-.cta .arr{transition:transform .15s;}
-.cta:hover .arr{transform:translateX(3px);}
-.trust{font-family:var(--font-meta);font-size:11px;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--ink-faint);margin-top:6px;}
-main{padding:34px 0 10px;}
-.eyebrow{font-family:var(--font-meta);font-size:11px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px;}
-.inside h2{font-family:var(--font-head);font-size:24px;font-weight:700;
-  line-height:1.18;color:var(--ink);}
-.inside .sub{color:var(--ink-soft);font-size:15.5px;margin-top:8px;line-height:1.55;}
-.peek{position:relative;margin-top:22px;border:1px solid var(--hairline);
-  border-radius:12px;background:var(--paper-2);padding:24px 26px 30px;overflow:hidden;
-  max-height:230px;}
-.peek-blur{filter:blur(4.6px);color:var(--ink-soft);font-size:15.5px;line-height:1.78;
-  user-select:none;-webkit-user-select:none;pointer-events:none;}
-.peek-fade{position:absolute;left:0;right:0;bottom:0;height:120px;
-  background:linear-gradient(to bottom,rgba(244,244,244,0),var(--paper-2));}
-.peek-note{font-family:var(--font-meta);font-size:11.5px;letter-spacing:.04em;
-  color:var(--ink-faint);margin-top:16px;}
-.buy-again{display:flex;align-items:center;gap:18px;margin:30px 0 8px;flex-wrap:wrap;}
-footer{padding:34px 0 60px;color:var(--ink-faint);font-family:var(--font-meta);
-  font-size:12px;letter-spacing:.05em;border-top:1px solid var(--hairline);margin-top:30px;}
-footer a{color:var(--accent);}footer a:hover{color:var(--accent-soft);}
+.wb-head{ grid-area:head; display:flex; flex-direction:column; gap:var(--space-s); min-width:0; }
+.wb-name{ font-family:'EB Garamond','EB Garamond fallback',Georgia,serif; font-weight:600; font-size:var(--t-h3); line-height:var(--lh-h3); color:var(--ink); }
+.wb-head h1{ max-width:12em; font-size:calc(var(--t-hero) * .78); }
+@media (max-width:420px){ .wb-head h1{ font-size:clamp(2.25rem, 10.6vw, 3.25rem); } }
+.wb-head .buyrow{ margin-top:var(--space-s); }
+.includes{ display:flex; flex-wrap:wrap; gap:var(--space-xs) var(--space-s); }
+.includes span{ white-space:nowrap; }
+.includes span + span::before{ content:"+"; color:var(--red); margin-right:var(--space-s); }
+.wb-more{ grid-area:more; display:grid; grid-template-columns:minmax(0,1fr); gap:var(--space-m); border-top:1px solid var(--hair); padding-top:var(--space-m); }
+@media (min-width:961px){ .wb-more{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); column-gap:var(--space-l); } .wb-more .byline{ grid-column:2; grid-row:1; } }
+.wb-more > div:not(.byline){ display:flex; flex-direction:column; gap:var(--space-m); }
+.wb-body{ grid-area:body; display:flex; flex-direction:column; gap:var(--space-m); min-width:0; }
+.wb-list{ list-style:none; margin:0; padding:0 0 0 .95em; display:flex; flex-direction:column; gap:var(--space-xs); max-width:34em; }
+.wb-list strong{ font-weight:700; color:var(--ink); }
+.byline{ display:flex; gap:var(--space-s); align-items:flex-start; max-width:34em; }
+.byline img{ width:44px; height:auto; flex:none; margin-top:4px; }
+
+/* the shot: one real page, cropped to what it says, at a size you can read */
+.wb-shot{ grid-area:shot; margin:0; width:100%; }
+.pg{ display:block; border:1px solid var(--ink); box-shadow:8px 8px 0 var(--ink); background:var(--oaktag); transition:box-shadow .15s ease-out; }
+.pg img{ display:block; width:100%; height:auto; }
+a.pg::after{ content:none; }
+a.pg:hover{ box-shadow:8px 8px 0 var(--red); }
+.wb-shot figcaption{ margin-top:var(--space-m); display:flex; flex-direction:column; gap:var(--space-xs); }
+
+/* ---- B: inside ---- */
+.wb-plain{ display:flex; flex-direction:column; gap:var(--space-m); }
+.wb-plain h2{ margin:0; }
+.intro{ display:flex; flex-direction:column; gap:var(--space-s); }
+.peeks{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:var(--space-l); }
+.peek{ display:grid; grid-template-columns:minmax(0,560px) minmax(0,1fr); gap:var(--space-l); align-items:start; }
+.peek .txt{ display:flex; flex-direction:column; gap:var(--space-s); padding-top:var(--space-s); }
+@media (max-width:860px){
+  .peeks{ gap:var(--space-m); }
+  .peek{ grid-template-columns:minmax(0,1fr); gap:var(--space-m); }
+  .peek .txt{ padding-top:0; }
+}
+
+/* ---- C: the afternoon ---- */
+.steps{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:repeat(6,auto); grid-auto-flow:column; column-gap:var(--space-l); border-top:1px solid var(--ink); }
+.steps li{ display:grid; grid-template-columns:3.2em minmax(0,1fr) auto; gap:var(--space-s); align-items:baseline;
+  padding:var(--space-s) 0; border-bottom:1px solid var(--hair); }
+.steps .t{ color:var(--ink); }
+.steps .n, .steps .min{ white-space:nowrap; }
+.steps-after{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--space-l); row-gap:var(--space-m); }
+.steps-after div{ display:flex; flex-direction:column; gap:var(--space-xs); border-left:3px solid var(--red); padding-left:var(--space-s); }
+.midbuy{ border-top:1px solid var(--ink); padding-top:var(--space-m); }
+@media (max-width:860px){
+  .steps, .steps-after{ grid-template-columns:minmax(0,1fr); }
+  .steps{ grid-template-rows:none; grid-auto-flow:row; }
+  .steps li{ grid-template-columns:2.6em minmax(0,1fr) auto; }
+}
+
+/* ---- D: plain facts ---- */
+.two{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-m) var(--space-l); }
+.two > div{ display:flex; flex-direction:column; gap:var(--space-xs); }
+@media (max-width:860px){ .two{ grid-template-columns:minmax(0,1fr); } }
+
+/* ---- E: the closing flood, fine print on an ink strip so it reads ---- */
+.wb-close{ background:var(--red); border:1px solid var(--ink); }
+.close-grid{ display:grid; grid-template-columns:minmax(0,1fr); gap:var(--space-m); align-items:end; }
+@media (min-width:961px){ .close-grid{ grid-template-columns:minmax(0,1fr) auto; column-gap:var(--space-l); } }
+.wb-close h2{ color:var(--ink); margin:0; max-width:13em; font-family:'Big Shoulders Display','Big Shoulders fallback',Impact,sans-serif; font-weight:800; line-height:.95; font-size:calc(var(--t-hero) * .78); }
+.wb-close .price{ color:var(--oaktag); }
+.closebuy{ display:flex; flex-wrap:wrap; gap:var(--space-s) var(--space-m); align-items:center; }
+.wb-close .btn:hover{ box-shadow: inset 0 -6px 0 var(--oaktag); }
+.wb-close a:focus-visible{ outline-color:var(--ink); }
+.strip{ background:var(--ink); color:var(--oaktag); margin:var(--plate-pad) calc(-1 * var(--plate-pad)) calc(-1 * var(--plate-pad)); padding:var(--space-s) var(--plate-pad); }
+.strip p{ margin:0; max-width:none; color:var(--oaktag); }
+
+/* the rail mark is a flex item in these plates, so take the flex gap back
+   out of its footprint or the plate's top padding doubles */
+.wb-plain[data-fig]::before{ margin-bottom:calc(var(--plate-pad) - 0.75em - var(--space-m)); }
+@media (max-width:860px){ .wb-plain[data-fig]::before{ margin-bottom:calc(var(--plate-pad) + 0.4em - var(--space-m)); } }
+/* phones: one even plate padding everywhere */
+@media (max-width:560px){
+  :root{ --plate-pad:24px; }
+  .block, .block.plate, .block.flood{ padding:24px; }
+}
+footer.colophon .lnk{ align-self:center; }
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Product","name":"The one-afternoon messaging workbook","description":"Twelve steps, one afternoon, and a messaging framework you can hand to anyone who writes for you.","brand":{"@type":"Brand","name":"Lee Fuhr"},"offers":{"@type":"Offer","price":"39.00","priceCurrency":"USD","url":"https://buy.stripe.com/bJe28t307gei3L9bW91wY1e","availability":"https://schema.org/InStock"}}
@@ -74,36 +126,189 @@ footer a{color:var(--accent);}footer a:hover{color:var(--accent-soft);}
 <script type="application/ld+json" data-schema="breadcrumb-auto">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Lee Fuhr","item":"https://reviews.leefuhr.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://reviews.leefuhr.com/store/"},{"@type":"ListItem","position":3,"name":"The one-afternoon messaging workbook","item":"https://reviews.leefuhr.com/store/products/one-afternoon-messaging-workbook.html"}]}</script>
 </head>
 <body>
-<header class="wrap">
-  <a class="back" href="../">&larr; All 25 tools</a>
-  <span class="tag">Your voice</span>
-  <h1>The one-afternoon messaging workbook</h1>
-  <p class="lead">Your homepage lists services, your sales calls open with company history, and everyone who writes for you says it a little differently. Twelve steps, one afternoon, and you finish with the framework you hand to a writer, a designer, or a new hire, once you’ve read it to one real customer.</p>
-  <div class="buy">
-    <span class="price">$39 &middot; instant download</span>
-    <a class="cta" href="https://buy.stripe.com/bJe28t307gei3L9bW91wY1e">Get it <span class="arr">&rarr;</span></a>
-  </div>
-  <p class="trust">49-page PDF, a print-ready copy, and an editable Word copy &middot; for your own business, not for running with clients &middot; secure Stripe checkout</p>
-</header>
-<main class="wrap">
-  <section class="inside">
-    <span class="eyebrow">Peek inside</span>
-    <h2>Step 2: name the shift and the villain</h2>
-    <p class="sub">Twelve steps, each with a time box, plus a fully worked example of an invented bookkeeping firm for restaurants, so you can see every step filled in</p>
-    <div class="peek">
-      <p class="peek-blur">Every good story has a villain, and your messaging needs one too. The villain is the thing standing between your customer and what they want. Naming it gives your customer something to be annoyed at alongside you, which is a far nicer place to sell from than “here’s why you need us.” Start with the shift: what changed in your customer’s world so the old way stopped working? Keep it close to them. “Business is harder than it used to be” is a shrug. “Your clients now expect a reply within the hour, and you’re on job sites until six” is a shift. Then name the villain. It can be an object (the spreadsheet, the shoebox of receipts), an approach (the once-a-year marketing push), or a situation (the busy se</p>
-      <div class="peek-fade"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="masthead-id">
+      <a class="masthead-brand" href="https://leefuhr.com/" aria-label="Lee Fuhr, home">
+        <img src="one-afternoon-messaging-workbook/img/lee-head-108.webp" width="80" height="108" alt="" decoding="async">
+        <span class="m-hard">Lee Fuhr</span>
+      </a>
+      <p class="masthead-headline">I help companies that make things say why a buyer should pick them</p>
     </div>
-    <p class="peek-note">A page from inside, blurred on purpose. Bring three customers you’d happily clone, your homepage, and a few recent proposals. Already own the $25 messaging kit or the $15 value proposition and story worksheets? This covers them and goes further: the whole eleven-section framework, with a worked example for every step.</p>
-  </section>
-  <div class="buy-again">
-    <span class="price">$39</span>
-    <a class="cta" href="https://buy.stripe.com/bJe28t307gei3L9bW91wY1e">Get it <span class="arr">&rarr;</span></a>
+    <nav class="masthead-nav" aria-label="Store">
+      <a class="m-hard lnk" href="../">All 25 tools</a>
+      <a class="m-hard lnk" href="https://leefuhr.com/">leefuhr.com</a>
+    </nav>
+  </header>
+</div>
+
+<main id="main">
+  <div class="wrap">
+    <div class="stack">
+
+      <section class="block wb-hero" data-fig="A" aria-labelledby="title">
+       <div class="wb-grid">
+        <div class="wb-head">
+          <p class="wb-name">The one-afternoon messaging workbook</p>
+          <h1 id="title">Find the words that make your best customer say, &ldquo;that&rsquo;s me&rdquo;</h1>
+          <div class="buyrow">
+            <p class="price">$39</p>
+            <a class="btn big m-out" href="https://buy.stripe.com/bJe28t307gei3L9bW91wY1e">Get the workbook <span class="arw" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <p class="m-hard includes">49-page PDF, a print-ready copy, an editable Word copy, and a fully worked example.</p>
+          <p class="m">Instant download after secure Stripe checkout. Not useful? <a class="lnk" href="mailto:hi@leefuhr.com?subject=Workbook%20refund">Email me</a> within 7 days for a full refund.</p>
+        </div>
+
+        <figure class="wb-shot">
+          <a class="pg" href="one-afternoon-messaging-workbook/img/page-8.webp" aria-label="Open page 8 at full size"><img src="one-afternoon-messaging-workbook/img/crop-8.webp" width="1040" height="1343" alt="Page 8 of the workbook, step 2, Name the shift and the villain: three short paragraphs of instruction, a boxed rule that the villain is never your customer, a competitor, or a person, and the first question with lines to write on" decoding="async"></a>
+          <figcaption>
+            <span class="m-hard">Page 8, step 2. Name the shift and the villain</span>
+            <span class="m">Each step is a short read, one rule to hold onto, then room to write. <a class="lnk" href="one-afternoon-messaging-workbook/img/page-8.webp">See the whole page</a></span>
+          </figcaption>
+        </figure>
+
+        <div class="wb-body">
+          <p class="pull">Your homepage lists services, your sales calls open with company history, and everyone who writes for you says it a little differently. Twelve steps, one afternoon, and you finish with the framework you hand to a writer, a designer, or a new hire, once you&rsquo;ve read it to one real customer.</p>
+        </div>
+        <div class="wb-more">
+          <div class="byline">
+            <img src="one-afternoon-messaging-workbook/img/lee-head-108.webp" width="80" height="108" alt="" decoding="async">
+            <p>I&rsquo;m Lee Fuhr. I write messaging frameworks for businesses that do real work. This is the method I use with clients, cut down so you can run it on your own.</p>
+          </div>
+          <div>
+            <p class="m-hard" style="margin-bottom:calc(-1 * var(--space-s))">What you get</p>
+            <ul class="wb-list">
+              <li class="outdent"><span class="mark" aria-hidden="true"></span><strong>A 49-page PDF</strong> with twelve steps, each with its own time box.</li>
+              <li class="outdent"><span class="mark" aria-hidden="true"></span><strong>A print-ready copy</strong>, if you&rsquo;d rather work with a pen.</li>
+              <li class="outdent"><span class="mark" aria-hidden="true"></span><strong>An editable Word copy</strong>, if you&rsquo;d rather type.</li>
+              <li class="outdent"><span class="mark" aria-hidden="true"></span><strong>A fully worked example</strong> of an invented bookkeeping firm for restaurants, so you can see every step filled in.</li>
+            </ul>
+            <p class="m">For your own business, as many times as you like. Not for running with your clients.</p>
+          </div>
+        </div>
+       </div>
+      </section>
+
+      <section class="block wb-plain" data-fig="B" aria-labelledby="inside">
+        <div class="intro">
+          <h2 id="inside">Look inside</h2>
+          <p>Real pages from the workbook. Open any of them at full size.</p>
+        </div>
+        <ul class="peeks">
+          <li class="peek">
+            <a class="pg" href="one-afternoon-messaging-workbook/img/page-44.webp" aria-label="Open page 44 at full size"><img src="one-afternoon-messaging-workbook/img/crop-44.webp" width="1040" height="1446" loading="lazy" decoding="async" alt="Page 44, the finished framework for the invented firm Ladle and Ledger: why the framework matters, its one promise, and its A+ customer described in five details"></a>
+            <div class="txt">
+              <span class="m-hard">Page 44. The finished framework</span>
+              <h3>What you walk away with</h3>
+              <p>Step 12 pulls your answers into eleven sections, the same ones I use for clients. Here it is filled in for Ladle &amp; Ledger, an invented bookkeeping firm for restaurants, so you know what yours should look like.</p>
+              <a class="m-hard lnk" href="one-afternoon-messaging-workbook/img/page-44.webp">See the whole page</a>
+            </div>
+          </li>
+          <li class="peek">
+            <a class="pg" href="one-afternoon-messaging-workbook/img/page-40.webp" aria-label="Open page 40 at full size"><img src="one-afternoon-messaging-workbook/img/crop-40.webp" width="1040" height="936" loading="lazy" decoding="async" alt="Page 40, the worked example for step 8: the shift and the villain written out as story paragraphs for the invented restaurant bookkeeping firm"></a>
+            <div class="txt">
+              <span class="m-hard">Page 40. The worked example</span>
+              <h3>Every step, filled in for a made-up firm</h3>
+              <p>The worked example runs every step, in order, at the back of the workbook. When a step stalls, flip to the same step in the example and see how it went for them.</p>
+              <a class="m-hard lnk" href="one-afternoon-messaging-workbook/img/page-40.webp">See the whole page</a>
+            </div>
+          </li>
+          <li class="peek">
+            <a class="pg" href="one-afternoon-messaging-workbook/img/page-29.webp" aria-label="Open page 29 at full size"><img src="one-afternoon-messaging-workbook/img/crop-29.webp" width="1040" height="853" loading="lazy" decoding="async" alt="Page 29, the checklist: tick boxes under Your customer and Your story"></a>
+            <div class="txt">
+              <span class="m-hard">Page 29. The checklist</span>
+              <h3>One page to run before you use it anywhere</h3>
+              <p>Tick boxes for your customer, your story, your messaging core, your words, and how you use it, so you know the framework holds up before it goes on your homepage.</p>
+              <a class="m-hard lnk" href="one-afternoon-messaging-workbook/img/page-29.webp">See the whole page</a>
+            </div>
+          </li>
+        </ul>
+        <div class="buyrow midbuy">
+          <p class="price">$39</p>
+          <a class="btn big m-out" href="https://buy.stripe.com/bJe28t307gei3L9bW91wY1e">Get the workbook <span class="arw" aria-hidden="true">&rarr;</span></a>
+          <p class="m">All 49 pages, instant download. Not useful? <a class="lnk" href="mailto:hi@leefuhr.com?subject=Workbook%20refund">Email me</a> within 7 days for a full refund.</p>
+        </div>
+      </section>
+
+      <section class="block wb-plain" data-fig="C" aria-labelledby="afternoon">
+        <div class="intro">
+          <h2 id="afternoon">How the afternoon runs</h2>
+          <p>About four and a half hours, plus a break. When a step&rsquo;s time is up, write your best answer and move on. Later steps often fix earlier ones.</p>
+        </div>
+        <ol class="steps">
+          <li><span class="m n">&sect;0</span><span class="t">Before you start</span><span class="m min">10 min</span></li>
+          <li><span class="m n">&sect;1</span><span class="t">Pick your A+ customer</span><span class="m min">30 min</span></li>
+          <li><span class="m n">&sect;2</span><span class="t">Name the shift and the villain</span><span class="m min">25 min</span></li>
+          <li><span class="m n">&sect;3</span><span class="t">List three obstacles</span><span class="m min">20 min</span></li>
+          <li><span class="m n">&sect;4</span><span class="t">Describe the dream</span><span class="m min">15 min</span></li>
+          <li><span class="m n">&sect;5</span><span class="t">Write the value proposition</span><span class="m min">25 min</span></li>
+          <li><span class="m n">&sect;6</span><span class="t">Map three benefits</span><span class="m min">20 min</span></li>
+          <li><span class="m n">&sect;7</span><span class="t">List what you do</span><span class="m min">15 min</span></li>
+          <li><span class="m n">&sect;8</span><span class="t">Write your story</span><span class="m min">30 min</span></li>
+          <li><span class="m n">&sect;9</span><span class="t">Pick your words</span><span class="m min">15 min</span></li>
+          <li><span class="m n">&sect;10</span><span class="t">Put it to work</span><span class="m min">20 min</span></li>
+          <li><span class="m n">&sect;11</span><span class="t">Pressure-test it</span><span class="m min">10 min</span></li>
+        </ol>
+        <div class="steps-after">
+          <div>
+            <h3 class="h3s">Then &sect;12 pulls it together</h3>
+            <p>Thirty minutes to fill in the eleven-section framework: the page you hand to a writer, a designer, a new salesperson, or an AI tool before anyone writes a word about you.</p>
+          </div>
+          <div>
+            <h3 class="h3s">And &sect;13 checks it</h3>
+            <p>A one-page checklist to run before you use the framework anywhere.</p>
+          </div>
+        </div>
+        <div class="buyrow midbuy">
+          <p class="price">$39</p>
+          <a class="btn big m-out" href="https://buy.stripe.com/bJe28t307gei3L9bW91wY1e">Get the workbook <span class="arw" aria-hidden="true">&rarr;</span></a>
+          <p class="m">Instant download. Not useful? <a class="lnk" href="mailto:hi@leefuhr.com?subject=Workbook%20refund">Email me</a> within 7 days for a full refund.</p>
+        </div>
+      </section>
+
+      <section class="block wb-plain" data-fig="D" aria-labelledby="bring">
+        <h2 id="bring">Before you buy</h2>
+        <div class="two">
+          <div>
+            <h3 class="h3s">What to bring</h3>
+            <p>Three customers you&rsquo;d happily clone, your homepage, and a few recent proposals or sales emails. Then a quiet afternoon. This is more thinking than writing.</p>
+          </div>
+          <div>
+            <h3 class="h3s">If you own the smaller kits</h3>
+            <p>Already own the $25 messaging kit or the $15 value proposition and story worksheets? This covers them and goes further: the whole eleven-section framework, with a worked example for every step.</p>
+          </div>
+          <div>
+            <h3 class="h3s">How you can use it</h3>
+            <p>Use it for your own business as many times as you like, and share your finished framework with anyone who works on it. Please don&rsquo;t resell or share the blank workbook, and don&rsquo;t run it with your own clients.</p>
+          </div>
+          <div>
+            <h3 class="h3s">Where the method comes from</h3>
+            <p>Its bones come from Emma Stratton&rsquo;s book <em>Make It Punchy</em>. The exercises, time boxes, wording, and worked example are mine, and she hasn&rsquo;t reviewed or endorsed this workbook.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="block wb-close" data-fig="E" aria-labelledby="close">
+       <div class="close-grid">
+          <h2 id="close">One afternoon. One page everyone writes from.</h2>
+          <div class="closebuy">
+            <p class="price">$39</p>
+            <a class="btn big m-out" href="https://buy.stripe.com/bJe28t307gei3L9bW91wY1e">Get the workbook <span class="arw" aria-hidden="true">&rarr;</span></a>
+          </div>
+       </div>
+       <div class="strip"><p class="m">49-page PDF, a print-ready copy, and an editable Word copy. For your own business, not for running with clients. Secure Stripe checkout, instant download. Not useful? <a class="lnk" style="background-image:linear-gradient(var(--oaktag),var(--oaktag))" href="mailto:hi@leefuhr.com?subject=Workbook%20refund">Email me</a> within 7 days for a full refund.</p></div>
+      </section>
+
+    </div>
   </div>
 </main>
-<footer class="wrap">
-  Secure checkout by Stripe &middot; instant download after purchase.<br>
-  <a href="../">&larr; Back to all 25 tools</a> &middot; &copy; Lee Fuhr
+
+<footer class="colophon">
+  <a class="m lnk" href="../">&larr; All 25 tools</a>
+  <a class="m lnk" href="https://leefuhr.com/">leefuhr.com</a>
+  <span class="m">&copy; 2026 Lee Fuhr, Inc.</span>
 </footer>
 </body>
 </html>
